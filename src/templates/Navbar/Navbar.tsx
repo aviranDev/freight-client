@@ -1,12 +1,19 @@
 import { useState } from "react";
-import { NavbarContainer } from "./NavbarStyles";
+import { NavbarContainer, NavbarInnerContainer } from "./NavbarStyles";
+import LeftNavigation from "./leftNavigation";
+import RightNavigation from "./RightNavigation";
+import { generalNav, guestNav } from "./navData";
+const user = null;
 
 export const Navbar = () => {
   const [collapse, setCollapse] = useState<boolean>(false);
 
   return (
     <NavbarContainer>
-      <h1>HEADER</h1>
+      <NavbarInnerContainer>
+        <LeftNavigation generalNav={generalNav} />
+        <RightNavigation user={user} guestNav={guestNav} />
+      </NavbarInnerContainer>
     </NavbarContainer>
   );
 };

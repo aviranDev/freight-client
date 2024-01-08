@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { color } from "../../styles/colors";
 import { Link } from "react-router-dom";
-const { primary, accent, alert, background } = color;
+const { primary, text1, text2, background } = color;
 
 export const FooterContainer = styled.div`
   /* Background color using the primary color from the color palette */
@@ -12,6 +12,7 @@ export const FooterContainer = styled.div`
   padding: 0.25rem;
   /* Font size for text content inside the FooterContainer */
   font-size: 14px; /* Adjust font size as needed */
+  border-top: 2px solid ${text1}; /* Fix the typo here */
 `;
 
 export const FooterWrapper = styled.div`
@@ -56,23 +57,23 @@ export const FooterSocialIcon = styled.a`
     /* Remove background on hover */
     background: none;
     /* Change text color on hover using the alert color from the color palette */
-    color: ${alert};
+    color: ${text1};
   }
 `;
 
 export const FooterLink = styled(Link)`
   /* Set the text color using the accent color from the color palette */
-  color: ${accent};
+  color: ${text2};
   /* Remove the default underline decoration for links */
   text-decoration: none;
   /* Add some bottom margin to the link for spacing */
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
   /* Apply styles for the hover state */
   &:hover {
     /* Remove background on hover */
     background: none;
     /* Change text color on hover using the alert color from the color palette */
-    color: ${alert};
+    color: ${text1};
     /* Add a smooth transition effect over 0.3 seconds */
     transition: 0.3s ease-out;
   }
@@ -86,7 +87,7 @@ export const FooterLinkTitle = styled.h2`
   /* Set the font weight to bold for emphasis */
   font-weight: bold;
   /* Set the text color using the alert color from the color palette */
-  color: ${alert};
+  color: ${text1};
 `;
 
 export const FooterLinkItems = styled.div`
@@ -94,11 +95,11 @@ export const FooterLinkItems = styled.div`
   display: flex;
   flex-direction: column;
   /* Add margin around the link items for spacing */
-  margin: 16px;
+  margin: 25px;
   /* Include padding and borders in the total width and height of the element */
   box-sizing: border-box;
   /* Set the text color using the alert color from the color palette */
-  color: ${alert};
+  color: ${text1};
 
   /* Media query for smaller screens (max-width: 1000px) */
   @media screen and (max-width: 1000px) {
@@ -109,15 +110,15 @@ export const FooterLinkItems = styled.div`
 
 export const Rights = styled.div`
   /* Set the text color using the accent color from the color palette */
-  color: ${accent};
+  color: ${text2};
   /* Set the width to 100% */
   width: 100%;
   /* Set the font size for the rights text */
   font-size: 0.9rem;
   /* Add a top border with color from the alert color in the color palette */
-  border-top: 1px solid ${alert};
+  border-top: 1px solid ${text1};
   /* Add padding around the content */
-  padding: 1rem;
+  padding: 1.5rem;
   /* Add margin to the top, pushing the element down */
   margin: 2rem 0 0;
 `;

@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { color } from "../styles/colors";
 
 const MainContainer = styled.main`
-  background: ${color.mintGreen};
-  color: ${color.navyBlue};
+  background: ${color.background};
+  color: red;
   grid-area: main;
 `;
 
