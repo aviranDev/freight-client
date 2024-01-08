@@ -13,20 +13,22 @@ export const TemplateContainer = styled.div`
   display: grid;
   height: 100vh;
   grid-template-areas:
-    "nav nav nav"
-    "main main main"
-    "footer footer footer";
+    "nav nav nav sidebar"
+    "main main main sidebar"
+    "footer footer footer sidebar";
     text-align: center;
     transition: all 0.25s ease-in-out;
     grid-template-rows: 0.3fr 3fr 1.5fr;
+    grid-template-columns: 1fr 1fr 1fr 250px; /* Adjust the width of the sidebar column based on your design */
 
 
-  @media (max-width: 550px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.2fr 2fr 1fr;
+  @media (max-width: 700px) {
     grid-template-areas:
       "nav"
       "main"
-      "footer";
+      "footer"
+      "sidebar"; /* Add the sidebar area for smaller screens */
+      display: flex;
+    flex-direction: column;
   }
 `;

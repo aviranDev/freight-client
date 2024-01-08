@@ -43,7 +43,7 @@ export const payload = new Map(
   ]
 );
 
-export const addData = (key: string, value: string) => {
+export const copyright = (key: string, value: string) => {
   const testData = new Map([[key, value]]);
   return testData.get(key);
 };
