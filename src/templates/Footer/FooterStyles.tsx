@@ -531,6 +531,7 @@ export const Rights: React.FC<RightsProps> = styled.div`
   /* Add padding around the content */
   padding: ${(props) => props.padding ?? "1.5rem"};
   /* Add margin to the top, pushing the element down */
+  /* Add margin to the top, pushing the element down */
   margin: 2rem 0 0;
   background-color: #16102e;
 `;
