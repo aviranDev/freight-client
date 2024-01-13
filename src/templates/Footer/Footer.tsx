@@ -16,12 +16,12 @@ const Footer = (): JSX.Element => (
       <FooterExternalLinks />
     </FooterWrapper>
 
-    <IconsContainer>
-      {Array.from(icons).map(([key, value]) => (
-        <FooterIcons key={key} icon={value} />
-      ))}
-    </IconsContainer>
     <Rights>
+      <IconsContainer>
+        {Array.from(icons).map(([key, value]) => (
+          <FooterIcons key={key} icon={value} />
+        ))}
+      </IconsContainer>
       {copyright("copyright", "Freight")} &copy; {new Date().getFullYear()}
     </Rights>
   </FooterContainer>

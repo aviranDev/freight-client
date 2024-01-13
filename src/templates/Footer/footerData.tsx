@@ -40,6 +40,7 @@ export const icons = new Map<string, IconInfo>([
   ["youtube", { tag: createElement(FaYoutube), href: "/" }],
   ["facebook", { tag: createElement(FaFacebook), href: "/" }],
   ["instagram", { tag: createElement(FaInstagram), href: "/" }],
+  ["test", { tag: createElement(FaInstagram), href: "/" }],
 ]);
 
 export const payload = new Map([
