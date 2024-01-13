@@ -1,47 +1,17 @@
 import { Fragment } from "react";
-import {
-  RightContainer,
-  Container,
-  Button,
-  DropdownMenuContainer,
-  NavbarLinkInternal,
-} from "./NavbarStyles";
+import { RightContainer, Container, NavbarLinkInternal } from "./NavbarStyles";
+import { UserNavType } from "./navData";
 
 interface RightNavigationProps {
-  user?: unknown; // Adjust the type based on the actual type of user data
+  user?: { role: string; isLoggedIn: boolean } | null; // Updated type to allow null
   guestNav: Map<string, string>;
+  userNav: UserNavType;
 }
 
 const RightNavigation: React.FC<RightNavigationProps> = (props) => {
   return (
     <RightContainer>
-      {props.user ? (
-        <Container>
-          {/*        {Array.from(props?.userNav(favorites)).map(([key, value]) => (
-            <Fragment key={key}>
-              {value.roles.find((role) =>
-                props?.user?.roles?.includes(role),
-              ) && (
-                <NavbarLinkInternal to={value.path}>{key}</NavbarLinkInternal>
-              )}
-            </Fragment>
-          ))} */}
-          <DropdownMenuContainer>
-            {/*   <Button onClick={handleDropDown}>
-              <Greeting />
-              {dropdown && <UserDropdown />}
-            </Button> */}
-          </DropdownMenuContainer>
-        </Container>
-      ) : (
-        <Container>
-          {Array.from(props.guestNav).map(([key, value]) => (
-            <Fragment key={key}>
-              <NavbarLinkInternal to={value}>{key}</NavbarLinkInternal>
-            </Fragment>
-          ))}
-        </Container>
-      )}
+      {props.user ? <Container></Container> : <Container></Container>}
     </RightContainer>
   );
 };

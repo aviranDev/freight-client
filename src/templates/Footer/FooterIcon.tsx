@@ -19,7 +19,9 @@ interface IconProps {
  * @param {ReactNode} props.icon.tag - The React node representing the icon.
  * @returns {JSX.Element} - The rendered Icon component.
  */
-export const Icon: React.FC<IconProps> = ({ icon }: IconProps): JSX.Element => (
+export const FooterIcons: React.FC<IconProps> = ({
+  icon,
+}: IconProps): JSX.Element => (
   <FooterSocialIcon href={icon.href} target="_blank">
     {icon.tag}
   </FooterSocialIcon>

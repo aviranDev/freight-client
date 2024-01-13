@@ -19,8 +19,7 @@ export const TemplateContainer = styled.div`
     text-align: center;
     transition: all 0.25s ease-in-out;
     grid-template-rows: 0.3fr 3fr 1.5fr;
-    grid-template-columns: 1fr 1fr 1fr 250px; /* Adjust the width of the sidebar column based on your design */
-
+    grid-template-columns: 1fr 1fr 1fr 245px; /* Adjust the width of the sidebar column based on your design */
 
   @media (max-width: 700px) {
     grid-template-areas:

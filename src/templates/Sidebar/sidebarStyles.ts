@@ -4,7 +4,7 @@ import { color } from "../../styles/colors";
 export const SidebarContainer = styled.div`
  grid-area: sidebar;
   min-height: 150px;
-  background: ${color.primary};
+  background: #16102E;
   border-left: 2px solid ${color.text1}; /* Fix the typo here */
   border-right: 2px solid ${color.text1}; /* Fix the typo here */
 `;
