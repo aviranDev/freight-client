@@ -196,7 +196,7 @@ export const FooterLinkContainer: React.FC<FooterLinkContainerProps> = styled.di
   display: flex;
   flex-direction: column;
   /* Add margin around the link items for spacing */
-  margin: ${(props) => props.margin ?? ""};
+  margin: ${(props) => props.margin ?? "20px"};
   /* Include padding and borders in the total width and height of the element */
   box-sizing: border-box;
   align-self: flex-start;
@@ -361,7 +361,7 @@ export const ExternalLinksContainer: React.FC<FooterExternalContainerProps> = st
     props.borderTopColor ||
     `1px solid ${props.borderTopColor || text1 || "#000"}`};
   /* Add padding around the content */
-  padding: ${(props) => props.padding ?? "1.5rem"};
+  padding-top: ${(props) => props.padding ?? "1.5rem"};
 `;
 
 // Props interface for FooterSocialIcon
@@ -422,6 +422,7 @@ export const ExternalLinks: React.FC<FooterExternalLinksProps> = styled.a`
 
 export const IconsContainer = styled.div`
   /* Add any styles you want for the FooterIcons container */
+  margin-bottom: 2rem;
 `;
 
 // Props interface for FooterSocialIcon
@@ -461,9 +462,15 @@ export const FooterSocialIcon: React.FC<FooterSocialIconProps> = styled.a`
   /* Set the text color using the background color from the color palette */
   color: ${(props) => props.color || secondary || "#000"};
   /* Set the font size for the social icon */
-  font-size: ${(props) => props.fontSize ?? "20px"};
+  font-size: ${(props) => props.fontSize ?? "25px"};
   /* Add margin around the social icon */
-  margin: ${(props) => props.margin ?? "5.5px"};
+  margin: ${(props) => props.margin ?? "15px"};
+
+  background-color: #16102e; // Background color for the icon container
+  border-radius: 55%; // Adjust the border-radius as needed
+  padding: 10px; // Optional: Add padding for extra spacing around the icon
+  padding-bottom: 4px;
+  border: 2px solid ${secondary}; // Border around the icon
 
   /* Apply styles for the hover state */
   &:hover {
@@ -523,6 +530,7 @@ export const Rights: React.FC<RightsProps> = styled.div`
     `1px solid ${props.borderTopColor || text1 || "#000"}`};
   /* Add padding around the content */
   padding: ${(props) => props.padding ?? "1.5rem"};
+  /* Add margin to the top, pushing the element down */
   /* Add margin to the top, pushing the element down */
   margin: 2rem 0 0;
   background-color: #16102e;
