@@ -12,20 +12,14 @@ export const externalLinks = new Map<string, ExternalLinksInfo>([
   [
     "maman",
     {
-      src: <img style={{ width: "150px" }} src={mamanLink} alt="maman-logo" />,
+      src: <img src={mamanLink} alt="maman-logo" />,
       href: "https://mamanonline.maman.co.il/",
     },
   ],
   [
     "swissport",
     {
-      src: (
-        <img
-          style={{ width: "150px" }}
-          src={swissportLink}
-          alt="swissport-logo"
-        />
-      ),
+      src: <img src={swissportLink} alt="swissport-logo" />,
       href: "https://www.swissport.co.il/heb/Main/",
     },
   ],
@@ -57,8 +51,8 @@ export const payload = new Map([
     "airlines",
     {
       links: [
-        { path: "maman", to: "/maman-airlines" },
-        { path: "swissport", to: "/swissport-airlines" },
+        { path: "maman airlines", to: "/maman-airlines" },
+        { path: "swissport airlines", to: "/swissport-airlines" },
       ],
     },
   ],
