@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { color } from "../../styles/colors";
 import { Link } from "react-router-dom";
-const { primary, text1, text2, secondary } = color;
+const { primary, text1, text2, secondary, text4 } = color;
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 /**
@@ -339,6 +339,30 @@ export const FooterLinkItem: React.FC<FooterLinkItemProps> = styled(Link)`
 
 /**
  * *************************************************************
+ * ******************** MIDDLE BORDER ***************************
+ * *************************************************************
+ */
+
+export const CenteredBorder = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; // Use 100% width by default
+  max-width: 1100px; // Set a maximum width
+  border-top: 1px solid rgba(255, 132, 132, 0.2);
+  margin: auto; // To center the component horizontally
+
+  @media screen and (max-width: 1100px) {
+    padding: 0 20px; // Add padding when the screen width is less than or equal to 1100px
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0 10px; // Further reduce padding for smaller screens
+  }
+`;
+
+/**
+ * *************************************************************
  * ******************** EXTERNAL LINKS ***************************
  * *************************************************************
  */
@@ -356,12 +380,11 @@ interface FooterExternalContainerProps
 
 export const ExternalLinksContainer: React.FC<FooterExternalContainerProps> = styled.div`
   /* Add any styles you want for the ExternalLinks container */
-  /* margin: 1rem; */
-  border-top: ${(props) =>
+  /*  border-top: ${(props) =>
     props.borderTopColor ||
-    `1px solid ${props.borderTopColor || text1 || "#000"}`};
+    `1.5px solid ${props.borderTopColor || text4 || "#000"}`}; */
   /* Add padding around the content */
-  padding-top: ${(props) => props.padding ?? "1.5rem"};
+  padding-top: ${(props) => props.padding ?? "1rem"};
 `;
 
 // Props interface for FooterSocialIcon
@@ -405,12 +428,23 @@ export const ExternalLinks: React.FC<FooterExternalLinksProps> = styled.a`
   font-size: ${(props) => props.fontSize ?? "20px"};
   /* Add margin around the social icon */
   margin: ${(props) => props.margin ?? "5.5px"};
-  margin: 8rem;
+  margin: 10rem;
 
   /* Apply styles for the hover state */
   &:hover {
     /* Change text color on hover using the alert color from the color palette */
     color: ${(props) => props.hover || text1 || "#000"};
+  }
+
+  img {
+    width: 150px;
+  }
+
+  @media screen and (max-width: 1000px) {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    align-items: center;
   }
 `;
 

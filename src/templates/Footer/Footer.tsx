@@ -3,7 +3,7 @@ import { icons, copyright } from "./footerData";
 import { FooterIcons } from "./FooterIcon";
 
 /* LAYOUT */
-import { FooterContainer, FooterWrapper } from "./FooterStyles";
+import { FooterContainer, FooterWrapper, CenteredBorder } from "./FooterStyles";
 
 /* SECTIONS */
 import { FooterInternalLinks } from "./sections/InternalLinks";
@@ -13,6 +13,8 @@ const Footer = (): JSX.Element => (
   <FooterContainer>
     <FooterWrapper>
       <FooterInternalLinks />
+      <CenteredBorder />
+
       <FooterExternalLinks />
     </FooterWrapper>
 
