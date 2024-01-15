@@ -1,16 +1,45 @@
 import styled from "styled-components";
 import { color } from "../../styles/colors";
 import { Link } from "react-router-dom";
-const { primary, text1, text2, secondary, text4 } = color;
+const { primary, text1, text2, secondary } = color;
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 /**
+ * Footer Color Configuration
+ *
+ * @description
+ * Configuration object defining colors used in the footer components.
+ *
+ * @property {string} background - The background color, defaults to the primary color.
+ * @property {string} middleBorder - The color of the middle border, specified as an RGBA value.
+ * @property {string} borderTop - The color of the top border, defaults to the text1 color.
+ */
+const footerColor = {
+  background: primary,
+  middleBorder: "rgba(255, 132, 132, 0.2)",
+  borderTop: text1,
+};
+
+/**
  * *************************************************************
- * ******************** Footer Container ***************************
+ * ********************* FOOTER CONTAINER **********************
  * *************************************************************
  */
 
-// Props interface for FooterContainer
+/**
+ * Interface FooterContainerProps represents the props for styling the FooterContainer component.
+ * It extends DetailedHTMLProps for HTMLDivElement, allowing all standard HTML div attributes,
+ * and includes additional optional styling props specific to the FooterContainer component.
+ *
+ * @interface FooterContainerProps
+ * @extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+ * @property {string} [background] - Optional background color for the FooterContainer.
+ * @property {string} [gridArea] - Specify the grid area for the FooterContainer or use 'footer' as the default.
+ * @property {string} [padding] - Optional padding around the content inside the FooterContainer.
+ * @property {string} [fontSize] - Optional font size for text content inside the FooterContainer.
+ * @property {string} [borderTop] - Optional top border style for the FooterContainer.
+ * @property {string} [borderTopColor] - Optional top border color for the FooterContainer, using 'text1' as the default.
+ */
 interface FooterContainerProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   background?: string; // Optional background color for the FooterContainer
@@ -43,28 +72,43 @@ interface FooterContainerProps
 export const FooterContainer: React.FC<FooterContainerProps> = styled.div`
   /* Grid area: specified by the 'gridArea' prop or defaults to 'footer' */
   grid-area: ${(props) => props.gridArea ?? "footer"};
+
   /* Background color: specified by the 'background' prop or defaults to the primary color */
-  background: ${(props) => props.background || primary || "#000"};
+  background: ${(props) =>
+    props.background || footerColor.background || "#000"};
+
   /* Padding: specified by the 'padding' prop or defaults to '0.25rem' */
   padding: ${(props) => props.padding ?? ""};
+
   /* Font size: specified by the 'fontSize' prop or defaults to '14px' */
   font-size: ${(props) => props.fontSize ?? "14px"};
+
   /* Top border: specified by the 'borderTop' prop or defaults to a 2px solid line with 'text1' color */
   border-top: ${(props) =>
-    props.borderTop || `2px solid ${props.borderTopColor || text1 || "#000"}`};
+    props.borderTop ||
+    `2px solid ${props.borderTopColor || footerColor.borderTop || "#000"}`};
 `;
 
 /**
  * *************************************************************
- * ******************** Footer Wrapper ***************************
+ * ******************** FOOTER WRAPPER *************************
  * *************************************************************
  */
 
-// Props interface for FooterWrapper
+/**
+ * Interface FooterWrapperProps represents the props for styling the FooterWrapper component.
+ * It extends DetailedHTMLProps for HTMLDivElement, allowing all standard HTML div attributes,
+ * and includes additional optional styling props specific to the FooterWrapper component.
+ *
+ * @interface FooterWrapperProps
+ * @extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+ * @property {string} [padding] - Optional padding around the content inside the FooterWrapper.
+ * @property {string} [maxWidth] - Optional maximum width for the FooterWrapper.
+ */
 interface FooterWrapperProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  padding?: string; // Optional padding around the content inside the FooterWrapper
-  maxWidth?: string; // Optional maximum width
+  padding?: string;
+  maxWidth?: string;
 }
 
 /**
@@ -88,15 +132,17 @@ interface FooterWrapperProps
 export const FooterWrapper: React.FC<FooterWrapperProps> = styled.div`
   /* Set the maximum width (customize as needed or use the provided prop) */
   max-width: ${(props) => props.maxWidth || "1290px"};
+
   /* Center horizontally using auto margins */
   margin: 0 auto;
+
   /* Additional padding for spacing between the content and edges */
-  padding: ${(props) => props.padding ?? "10px"};
+  padding: ${(props) => props.padding || "10px"};
 `;
 
 /**
  * *************************************************************
- * ******************** Footer Grid ***************************
+ * ********************* Footer Grid ***************************
  * *************************************************************
  */
 
@@ -130,36 +176,53 @@ export const FooterWrapper: React.FC<FooterWrapperProps> = styled.div`
 export const FooterGrid = styled.div`
   /* Use CSS Grid for layout */
   display: grid;
-  /* Create columns that are responsive, 
-  with a minimum width of 200px and a maximum width of 1fr (equal distribution) */
+
+  /* Create columns that are responsive */
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
   /* Center the content horizontally within the grid */
   justify-content: center;
+
   /* Center the content vertically within the grid */
   align-items: center;
 
+  /* Set margin-left to provide space from the left edge of the container */
   margin-left: 5rem;
 
   /* Media query for smaller screens (max-width: 780px) */
   @media screen and (max-width: 780px) {
     /* Switch to flex layout for smaller screens */
     display: flex;
+
     /* Allow flex items to wrap onto the next line */
     flex-wrap: wrap;
+
     /* Change the direction of the flex container to column */
     flex-direction: column;
 
+    /* Reset margin-left to 0 to ensure proper alignment on smaller screens */
     margin-left: 0;
   }
 `;
 
 /**
  * *************************************************************
- * ******************** INTERNAL LINK CONTAINER ***************
+ * ******************** INTERNAL LINK CONTAINER ****************
  * *************************************************************
  */
 
-// Props interface for FooterLinkTitle
+/**
+ * Interface FooterLinkContainerProps represents the props for styling the FooterLinkContainer component.
+ * It extends DetailedHTMLProps for HTMLDivElement, allowing all standard HTML div attributes,
+ * and includes additional optional styling props specific to the FooterLinkContainer component.
+ *
+ * @interface FooterLinkContainerProps
+ * @extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+ * @property {string} [color] - The color of the text content within the FooterLinkContainer.
+ * @property {string} [margin] - The margin applied to the FooterLinkContainer.
+ * @property {string} [fontSize] - The font size of the text content within the FooterLinkContainer.
+ * @property {string} [fontWeight] - The font weight of the text content within the FooterLinkContainer.
+ */
 interface FooterLinkContainerProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   color?: string;
@@ -169,8 +232,8 @@ interface FooterLinkContainerProps
 }
 
 /**
- * FooterLinkItems is a styled functional component representing a container for footer link items.
- * @component FooterLinkItems
+ * FooterLinkContainer is a styled functional component representing a container for footer link items.
+ * @component FooterLinkContainer
  *
  * @description
  * This component uses the styled-components library to create a container for footer link items.
@@ -188,17 +251,21 @@ interface FooterLinkContainerProps
  * Responsive Styles (Media Query - max-width: 1000px):
  * - Horizontal Alignment: Center link items horizontally for smaller screens.
  *
- * @props {FooterLinkItemsProps} props - The properties to customize the appearance of the FooterLinkItems.
- * @returns {JSX.Element} The styled FooterLinkItems component.
+ * @props {FooterLinkContainerProps} props - The properties to customize the appearance of the FooterLinkContainer.
+ * @returns {JSX.Element} The styled FooterLinkContainer component.
  */
 export const FooterLinkContainer: React.FC<FooterLinkContainerProps> = styled.div`
   /* Use flex layout with column direction for the link items */
   display: flex;
   flex-direction: column;
+
   /* Add margin around the link items for spacing */
   margin: ${(props) => props.margin ?? "20px"};
+
   /* Include padding and borders in the total width and height of the element */
   box-sizing: border-box;
+
+  /* Align the component to the start of the cross axis (vertical alignment) */
   align-self: flex-start;
 
   /* Media query for smaller screens (max-width: 1000px) */
@@ -206,7 +273,8 @@ export const FooterLinkContainer: React.FC<FooterLinkContainerProps> = styled.di
     /* Center the link items horizontally for smaller screens */
     align-items: center;
 
-    align-self: auto; /* or remove this line if it's causing issues */
+    /* or remove this line if it's causing issues */
+    align-self: auto;
   }
 `;
 
@@ -216,7 +284,18 @@ export const FooterLinkContainer: React.FC<FooterLinkContainerProps> = styled.di
  * *************************************************************
  */
 
-// Props interface for FooterLinkTitle
+/**
+ * Interface FooterLinkTitleProps represents the props for styling the FooterLinkTitle component.
+ * It extends DetailedHTMLProps for HTMLDivElement, allowing all standard HTML div attributes,
+ * and includes additional optional styling props specific to the FooterLinkTitle component.
+ *
+ * @interface FooterLinkTitleProps
+ * @extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+ * @property {string} [color] - The color of the text content within the FooterLinkTitle.
+ * @property {string} [margin] - The margin applied to the FooterLinkTitle.
+ * @property {string} [fontSize] - The font size of the text content within the FooterLinkTitle.
+ * @property {string} [fontWeight] - The font weight of the text content within the FooterLinkTitle.
+ */
 interface FooterLinkTitleProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   color?: string;
@@ -247,9 +326,9 @@ interface FooterLinkTitleProps
 export const FooterLinkTitle: React.FC<FooterLinkTitleProps> = styled.h2`
   /* Set the text color using the alert color from the color palette or a provided custom color */
   color: ${(props) => props.color || text1 || "#000"};
+  margin-top: ${(props) => props.margin ?? "16px"};
 
   /* Add margin around the link title for spacing */
-  margin-top: ${(props) => props.margin ?? "16px"};
   margin-bottom: ${(props) => props.margin ?? "16px"};
 
   /* Set the font size for the link title */
@@ -261,6 +340,7 @@ export const FooterLinkTitle: React.FC<FooterLinkTitleProps> = styled.h2`
   /* Capitalize the text */
   text-transform: capitalize;
 
+  /* Align the component to the start of the cross axis (vertical alignment) */
   align-self: flex-start;
 `;
 
@@ -270,7 +350,19 @@ export const FooterLinkTitle: React.FC<FooterLinkTitleProps> = styled.h2`
  * *************************************************************
  */
 
-// Props interface for FooterLinkItem
+/**
+ * Interface FooterLinkItemProps represents the props for styling the FooterLinkItem component.
+ * It extends DetailedHTMLProps for HTMLDivElement, allowing all standard HTML div attributes,
+ * and includes additional optional styling props specific to the FooterLinkItem component.
+ *
+ * @interface FooterLinkItemProps
+ * @extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+ * @property {string} [color] - The color of the text content within the FooterLinkItem.
+ * @property {string} [to] - The link or URL to navigate to when the FooterLinkItem is clicked.
+ * @property {string} [marginBottom] - The margin applied to the bottom of the FooterLinkItem.
+ * @property {string} [hover] - The styling applied on hover for the FooterLinkItem.
+ * @property {string} [fontSize] - The font size of the text content within the FooterLinkItem.
+ */
 interface FooterLinkItemProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   color?: string;
@@ -306,20 +398,25 @@ interface FooterLinkItemProps
 export const FooterLinkItem: React.FC<FooterLinkItemProps> = styled(Link)`
   /* Set the text color using the accent color from the color palette */
   color: ${(props) => props.color || text2 || "#000"};
+
   /* Remove the default underline decoration for links */
   text-decoration: none;
+
   /* Add some bottom margin to the link for spacing */
   margin-bottom: ${(props) => props.marginBottom ?? "0.7rem"};
+
   /* Align links to the start (left) vertically */
   align-self: flex-start;
-  /* Increased margin from 4rem to 4.5rem for additional spacing from the left */
-  /* margin-left: 5rem; */
+
   /* Set the line height for better vertical spacing of the text within the link */
-  line-height: 1.7ch;
+  line-height: 2ch;
+
   /* Capitalize the text */
   text-transform: capitalize;
+
   /* Set font size to the provided value or a default of 13px */
   font-size: ${(props) => props.fontSize ?? "15px"};
+
   /* Set font weight to bold */
   font-weight: bold;
 
@@ -327,6 +424,7 @@ export const FooterLinkItem: React.FC<FooterLinkItemProps> = styled(Link)`
   &:hover {
     /* Change text color on hover using the alert color from the color palette */
     color: ${(props) => props.hover ?? text1};
+
     /* Add a smooth transition effect over 0.3 seconds */
     transition: 0.3s ease-out;
   }
@@ -339,55 +437,126 @@ export const FooterLinkItem: React.FC<FooterLinkItemProps> = styled(Link)`
 
 /**
  * *************************************************************
- * ******************** MIDDLE BORDER ***************************
+ * ********************* MIDDLE BORDER *************************
  * *************************************************************
  */
 
+/**
+ * CenteredBorder is a styled component representing a container with a centered border.
+ * @component CenteredBorder
+ *
+ * @description
+ * This component uses flexbox to center its content horizontally and vertically.
+ * It has a default width of 100%, a maximum width of 1100px, and a 1px solid top border.
+ * The component is horizontally centered using the `margin: auto` property.
+ * On smaller screens, additional padding is added for a better visual experience.
+ *
+ * @styleguide
+ * Default Styles:
+ * - Display: Flex layout.
+ * - Justify Content: Center horizontally.
+ * - Align Items: Center vertically.
+ * - Width: 100%.
+ * - Maximum Width: 1100px.
+ * - Top Border: 1px solid color specified by `footerColor.middleBorder`.
+ * - Margin: Auto for horizontal centering.
+ *
+ * Responsive Styles (Media Queries):
+ * - Screen width up to 1100px: Additional padding of 20px.
+ * - Screen width up to 768px: Further reduced padding to 10px.
+ *
+ * @returns {JSX.Element} The styled CenteredBorder component.
+ */
 export const CenteredBorder = styled.div`
+  /* Use flexbox for layout */
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%; // Use 100% width by default
-  max-width: 1100px; // Set a maximum width
-  border-top: 1px solid rgba(255, 132, 132, 0.2);
-  margin: auto; // To center the component horizontally
 
+  /* Center content along the main axis (horizontal) */
+  justify-content: center;
+
+  /* Center content along the cross axis (vertical) */
+  align-items: center;
+
+  /* Use 100% width by default */
+  width: 100%;
+
+  /* Set a maximum width */
+  max-width: 1100px;
+
+  /* Top border with color specified by footerColor.middleBorder */
+  border-top: 1px solid ${footerColor.middleBorder};
+
+  /* Center the component horizontally using margin: auto */
+  margin: auto;
+
+  /* Media query for screen width up to 1100px */
   @media screen and (max-width: 1100px) {
-    padding: 0 20px; // Add padding when the screen width is less than or equal to 1100px
+    /* Add additional padding for a better visual experience */
+    padding: 0 20px;
   }
 
+  /* Media query for screen width up to 768px */
   @media screen and (max-width: 768px) {
-    padding: 0 10px; // Further reduce padding for smaller screens
+    /* Further reduce padding for smaller screens */
+    padding: 0 10px;
   }
 `;
 
 /**
  * *************************************************************
- * ******************** EXTERNAL LINKS ***************************
+ * ********************* EXTERNAL LINKS ************************
  * *************************************************************
  */
-// Props interface for FooterSocialIcon
+
+/**
+ * Interface FooterExternalContainerProps represents the props for styling the FooterExternalContainer component.
+ * It extends DetailedHTMLProps for HTMLDivElement, allowing all standard HTML div attributes,
+ * and includes additional optional styling props specific to the FooterExternalContainer component.
+ *
+ * @interface FooterExternalContainerProps
+ * @extends DetailedHTMLPropsHTMLAttributesHTMLDivElement
+ * @property {string} [padding] - The padding applied to the content inside the FooterExternalContainer.
+ */
 interface FooterExternalContainerProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  color?: string;
-  fontSize?: string;
-  margin?: string;
-  hover?: string;
-  href?: string;
   padding?: string;
-  borderTopColor?: string;
 }
 
+/**
+ * ExternalLinksContainer is a styled functional component representing a container for external links in the footer.
+ * @component ExternalLinksContainer
+ *
+ * @description
+ * This component uses the styled-components library to create a container for external links in the footer.
+ * It allows customization of padding around the content.
+ *
+ * @styleguide
+ * Default Styles:
+ * - Padding: 1rem (adjustable via the `padding` prop).
+ *
+ * @props {FooterExternalContainerProps} props - The properties to customize the appearance of the ExternalLinksContainer.
+ * @returns {JSX.Element} The styled ExternalLinksContainer component.
+ */
 export const ExternalLinksContainer: React.FC<FooterExternalContainerProps> = styled.div`
-  /* Add any styles you want for the ExternalLinks container */
-  /*  border-top: ${(props) =>
-    props.borderTopColor ||
-    `1.5px solid ${props.borderTopColor || text4 || "#000"}`}; */
   /* Add padding around the content */
   padding-top: ${(props) => props.padding ?? "1rem"};
 `;
 
-// Props interface for FooterSocialIcon
+/**
+ * Interface FooterExternalLinksProps represents the props for styling the FooterExternalLinks component.
+ * It extends DetailedHTMLProps for HTMLDivElement, allowing all standard HTML div attributes,
+ * and includes additional optional styling props specific to the FooterExternalLinks component.
+ *
+ * @interface FooterExternalLinksProps
+ * @extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+ * @property {string} [color] - The color of the text content within the FooterExternalLinks.
+ * @property {string} [fontSize] - The font size of the text content within the FooterExternalLinks.
+ * @property {string} [margin] - The margin applied to the FooterExternalLinks.
+ * @property {string} [hover] - The styling applied on hover for the FooterExternalLinks.
+ * @property {string} [href] - The link or URL to navigate to when the FooterExternalLinks is clicked.
+ * @property {string} [target] - The target attribute for the link, specifying where to open the linked document.
+ * @property {string} [borderTopColor] - The color of the top border for the FooterExternalLinks.
+ */
 interface FooterExternalLinksProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   color?: string;
@@ -400,8 +569,8 @@ interface FooterExternalLinksProps
 }
 
 /**
- * FooterSocialIcon is a styled functional component representing a social media icon.
- * @component FooterSocialIcon
+ * ExternalLinks is a styled functional component representing a link for external social media icons in the footer.
+ * @component ExternalLinks
  *
  * @description
  * This component serves as a styled link for social media icons. It supports customization
@@ -418,16 +587,23 @@ interface FooterExternalLinksProps
  * Hover Styles:
  * - Text Color: Changes to the default text color from the color palette or a provided custom hover color.
  *
- * @props {FooterSocialIconProps} props - The properties to customize the appearance of the FooterSocialIcon.
- * @returns {JSX.Element} The styled FooterSocialIcon component.
+ * Responsive Styles (Media Query - max-width: 1000px):
+ * - Display: Flex layout.
+ * - Flex Direction: Column layout.
+ * - Margin: 2rem.
+ * - Align Items: Center horizontally.
+ *
+ * @props {FooterExternalLinksProps} props - The properties to customize the appearance of the ExternalLinks.
+ * @returns {JSX.Element} The styled ExternalLinks component.
  */
 export const ExternalLinks: React.FC<FooterExternalLinksProps> = styled.a`
   /* Set the text color using the background color from the color palette */
   color: none;
+
   /* Set the font size for the social icon */
   font-size: ${(props) => props.fontSize ?? "20px"};
-  /* Add margin around the social icon */
-  margin: ${(props) => props.margin ?? "5.5px"};
+
+  /* Additional margin for mobile responsiveness */
   margin: 10rem;
 
   /* Apply styles for the hover state */
@@ -436,30 +612,65 @@ export const ExternalLinks: React.FC<FooterExternalLinksProps> = styled.a`
     color: ${(props) => props.hover || text1 || "#000"};
   }
 
+  /* Set a fixed width for the embedded image */
   img {
     width: 150px;
   }
 
+  /* Media query for smaller screens (max-width: 1000px) */
   @media screen and (max-width: 1000px) {
+    /* Switch to flex layout for smaller screens */
     display: flex;
+
+    /* Change flex direction to column for vertical alignment */
     flex-direction: column;
+
+    /* Adjust margin for spacing on smaller screens */
     margin: 2rem;
+
+    /* Center the items horizontally */
     align-items: center;
   }
 `;
 
 /**
  * *************************************************************
- * ******************** SOCIAL ICON ***************************
+ * ********************** SOCIAL ICON **************************
  * *************************************************************
  */
 
+/**
+ * IconsContainer is a styled component representing a container for footer icons.
+ * @component IconsContainer
+ *
+ * @description
+ * This component serves as a container for footer icons. You can add any additional styles here as needed.
+ *
+ * @styleguide
+ * Default Styles:
+ * - Margin Bottom: 2rem.
+ *
+ * @returns {JSX.Element} The styled IconsContainer component.
+ */
 export const IconsContainer = styled.div`
   /* Add any styles you want for the FooterIcons container */
-  margin-bottom: 2rem;
+  margin-bottom: 1.3rem;
 `;
 
-// Props interface for FooterSocialIcon
+/**
+ * Interface FooterSocialIconProps represents the props for styling the FooterSocialIcon component.
+ * It extends DetailedHTMLProps for HTMLDivElement, allowing all standard HTML div attributes,
+ * and includes additional optional styling props specific to the FooterSocialIcon component.
+ *
+ * @interface FooterSocialIconProps
+ * @extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+ * @property {string} [color] - The color of the text content within the FooterSocialIcon.
+ * @property {string} [fontSize] - The font size of the text content within the FooterSocialIcon.
+ * @property {string} [margin] - The margin applied to the FooterSocialIcon.
+ * @property {string} [hover] - The styling applied on hover for the FooterSocialIcon.
+ * @property {string} [href] - The link or URL to navigate to when the FooterSocialIcon is clicked.
+ * @property {string} [target] - The target attribute for the link, specifying where to open the linked document.
+ */
 interface FooterSocialIconProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   color?: string;
@@ -495,16 +706,26 @@ interface FooterSocialIconProps
 export const FooterSocialIcon: React.FC<FooterSocialIconProps> = styled.a`
   /* Set the text color using the background color from the color palette */
   color: ${(props) => props.color || secondary || "#000"};
+
   /* Set the font size for the social icon */
   font-size: ${(props) => props.fontSize ?? "25px"};
+
   /* Add margin around the social icon */
   margin: ${(props) => props.margin ?? "15px"};
 
-  background-color: #16102e; // Background color for the icon container
-  border-radius: 55%; // Adjust the border-radius as needed
-  padding: 10px; // Optional: Add padding for extra spacing around the icon
-  padding-bottom: 4px;
-  border: 2px solid ${secondary}; // Border around the icon
+  // Background color for the icon container
+  background-color: #16102e;
+
+  // Adjust the border-radius as needed
+  border-radius: 55%;
+
+  // Optional: Add padding for extra spacing around the icon
+  padding: 10px;
+
+  padding-bottom: 3.6px;
+
+  // Border around the icon
+  border: 2px solid ${secondary};
 
   /* Apply styles for the hover state */
   &:hover {
@@ -515,11 +736,22 @@ export const FooterSocialIcon: React.FC<FooterSocialIconProps> = styled.a`
 
 /**
  * *************************************************************
- * ******************** Rights ***************************
+ * ************************** RIGHTS ***************************
  * *************************************************************
  */
 
-// Props interface for Rights
+/**
+ * Interface RightsProps represents the props for styling the Rights component.
+ * It extends DetailedHTMLProps for HTMLDivElement, allowing all standard HTML div attributes,
+ * and includes additional optional styling props specific to the Rights component.
+ *
+ * @interface RightsProps
+ * @extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+ * @property {string} [color] - The color of the text content within the Rights component.
+ * @property {string} [fontSize] - The font size of the text content within the Rights component.
+ * @property {string} [borderTopColor] - The color of the top border for the Rights component.
+ * @property {string} [padding] - The padding applied to the content inside the Rights component.
+ */
 interface RightsProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   color?: string;
@@ -547,6 +779,7 @@ interface RightsProps
  * - Top Border: A 1px solid line with the color specified by the 'borderTopColor' prop or the text1 color.
  * - Padding: 1.5rem.
  * - Margin: 2rem at the top, pushing the element down.
+ * - Background Color: #16102e.
  *
  * @props {RightsProps} props - The properties to customize the appearance of the Rights component.
  * @returns {JSX.Element} The styled Rights component.
@@ -554,18 +787,24 @@ interface RightsProps
 export const Rights: React.FC<RightsProps> = styled.div`
   /* Set the text color using the alert color from the color palette or a provided custom color */
   color: ${(props) => props.color || text2 || "#000"};
+
   /* Set the width to 100% */
   width: 100%;
+
   /* Set the font size for the link title */
   font-size: ${(props) => props.fontSize ?? "0.9rem"};
+
   /* Top border: specified by the 'borderTop' prop or defaults to a 2px solid line with 'text1' color */
   border-top: ${(props) =>
     props.borderTopColor ||
     `1px solid ${props.borderTopColor || text1 || "#000"}`};
+
   /* Add padding around the content */
   padding: ${(props) => props.padding ?? "1.5rem"};
-  /* Add margin to the top, pushing the element down */
+
   /* Add margin to the top, pushing the element down */
   margin: 2rem 0 0;
+
+  /* Set a background color for the element */
   background-color: #16102e;
 `;

@@ -14,7 +14,6 @@ const Footer = (): JSX.Element => (
     <FooterWrapper>
       <FooterInternalLinks />
       <CenteredBorder />
-
       <FooterExternalLinks />
     </FooterWrapper>
 
