@@ -3,8 +3,8 @@ import {
   FooterLinkTitle,
   FooterLinkItem,
   FooterGrid,
-} from "../FooterStyles";
-import { payload } from "../footerData";
+} from "./FooterStyles";
+import { payload } from "./footerData";
 
 interface LinkProps {
   // 'section' prop represents the data for rendering the links

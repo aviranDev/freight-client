@@ -9,4 +9,7 @@ export const color = {
   // Color for alerts or notifications
   text1: "#FF8484",
   text4: "rgba(255, 132, 132, 0.2)",
-};
+}
+
+
+

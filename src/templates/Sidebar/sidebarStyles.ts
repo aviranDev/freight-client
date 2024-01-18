@@ -5,6 +5,7 @@ export const SidebarContainer = styled.div`
  grid-area: sidebar;
   min-height: 150px;
   background: #16102E;
+  /* background: #5C5470; */
   border-left: 2px solid ${color.text1}; /* Fix the typo here */
   border-right: 2px solid ${color.text1}; /* Fix the typo here */
 `;
