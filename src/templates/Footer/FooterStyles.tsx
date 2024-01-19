@@ -2,48 +2,70 @@ import { FC } from "react";
 import styled from "styled-components";
 import { color } from "../../styles/colors";
 import { Link } from "react-router-dom";
-const { text1, text2 } = color;
 import { FooterProps } from "./interface";
 import { clrs } from "./footerColors";
+const { text1, text2 } = color;
 
-export const FooterContainer: FC<FooterProps> = styled.div`
+export const FooterWrapper: FC<FooterProps> = styled.div`
   grid-area: ${({ gArea }) => gArea ?? "footer"};
   background: ${({ bgc }) => bgc || clrs.bgc || "#000"};
   padding: ${({ pad }) => pad ?? ""};
-  font-size: ${({ fSize }) => fSize ?? "14px"};
-  border-top: ${({ bt }) => bt || `2px solid ${clrs.bTop || "#000"}`};
+  border-top: ${({ bTop }) => bTop || `1px solid ${clrs.bTop || "#000"}`};
 `;
 
-export const FooterWrapper: FC<FooterProps> = styled.div`
-  max-width: ${({ maxW }) => maxW || "1290px"};
-  padding: ${({ pad }) => pad || "8px"};
-  background-color: ${({ bgc }) => bgc || ""};
-  margin: ${({ m }) => m || "0 auto"};
-`;
-
-export const FooterGrid: FC<FooterProps> = styled.div`
+export const FooterSectionOne: FC<FooterProps> = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  margin-left: ${({ ml }) => ml || "5rem"};
+  max-width: ${({ maxW }) => maxW || "1290px"};
+  margin: 0 auto;
+  justify-items: center;
+  margin-top: ${({ pt }) => pt || "8px"};
+  background-color: ${({ bgc }) => bgc || ""};
 
-  @media screen and (max-width: 780px) {
-    align-items: center;
+  @media screen and (max-width: 550px) {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    margin-left: ${({ ml }) => ml || 0};
+    align-items: center;
   }
 `;
+
+export const FooterSectionTwo: React.FC<FooterProps> = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  max-width: ${({ maxW }) => maxW || "1000px"};
+  padding: 1rem;
+  place-items: center;
+  margin: 0 auto;
+
+  @media screen and (max-width: 900px) {
+    & > :first-child,
+    & > :last-child {
+      padding-left: 2%;
+      padding-right: 2%;
+    }
+  }
+`;
+
+export const FooterSectionThree: React.FC<FooterProps> = styled.div`
+  display: flex;
+  justify-content: center;
+  background-color: ${({ bgc }) => bgc ?? "#16102e"};
+  color: ${({ clr }) => clr || text2 || "#000"};
+  font-size: ${({ fSize }) => fSize ?? "0.9rem"};
+  border-top: ${({ bTop }) => bTop ?? `1px solid ${text1 || "#000"}`};
+  padding: ${({ pad }) => pad ?? "1rem"};
+`;
+
+/**
+ * **********************************************************************************
+ */
 
 export const FooterLinkContainer: React.FC<FooterProps> = styled.div`
   display: flex;
   flex-direction: column;
-  margin: ${({ m }) => m ?? "20px"};
+  margin-bottom: ${({ m }) => m ?? "10px"};
   margin-top: ${({ mt }) => mt ?? "1.5rem"};
-
-  @media screen and (max-width: 1000px) {
-    align-self: auto;
-  }
 `;
 
 export const FooterLinkTitle: React.FC<FooterProps> = styled.h2`
@@ -76,61 +98,30 @@ export const CenteredBorder: FC<FooterProps> = styled.div`
   justify-content: center;
   align-items: center;
   max-width: ${({ maxW }) => maxW ?? "1100px"};
-  border-top: ${({ bt }) => bt || `1px solid ${clrs.border || "#000"}`};
+  border-top: ${({ bTop }) => bTop || `1px solid ${clrs.border || "#000"}`};
   margin: auto;
 `;
 
-/* works */
-
-export const ExternalLinksContainer: React.FC<FooterProps> = styled.div`
-  padding-top: ${({ pad }) => pad ?? "1rem"};
-`;
-
-export const ExternalLinks: React.FC<FooterProps> = styled.a`
-  color: none;
-  font-size: ${({ fSize }) => fSize ?? "20px"};
-  margin: 10rem;
-
-  &:hover {
-    color: ${({ hvr }) => hvr || text1 || "#000"};
-  }
+export const ExternalLink: React.FC<FooterProps> = styled.a`
+  color: inherit;
+  align-self: baseline;
 
   img {
-    width: 150px;
-  }
-
-  @media screen and (max-width: 1000px) {
-    display: flex;
-    flex-direction: column;
-    margin: 2rem;
-    align-items: center;
+    width: ${({ imgWith }) => imgWith ?? "150px"};
   }
 `;
 
-export const IconsContainer = styled.div`
-  margin-bottom: 1.3rem;
+export const LinksContainer = styled.div`
+  text-align: justify;
 `;
 
-export const FooterSocialIcon: React.FC<FooterProps> = styled.a`
+export const FooterLinks: React.FC<FooterProps> = styled(Link)`
   color: ${({ clr }) => clr || clrs.iconClr || "#000"};
-  font-size: ${({ fSize }) => fSize ?? "25px"};
-  margin: ${({ m }) => m ?? "15px"};
+  margin-right: ${({ mr }) => mr ?? "4rem"};
+  font-size: ${({ fSize }) => fSize ?? "18px"};
   background-color: #16102e;
-  border-radius: 55%;
-  padding: 10px;
-  padding-bottom: 3.6px;
-  border: 2px solid ${clrs.iconClr};
-
+  text-decoration: none;
   &:hover {
     color: ${({ hvr }) => hvr || clrs.bTop || "#000"};
   }
-`;
-
-export const FooterCopyright: React.FC<FooterProps> = styled.div`
-  color: ${({ clr }) => clr || text2 || "#000"};
-  font-size: ${({ fSize }) => fSize ?? "0.9rem"};
-  border-top: ${({ bt }) => bt || `1px solid ${text1 || "#000"}`};
-  padding: ${({ pad }) => pad ?? "1rem"};
-  margin: 2rem 0 0;
-  background-color: #16102e;
 `;

@@ -3,6 +3,17 @@ import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 import mamanLink from "/assets/maman-logo.png";
 import swissportLink from "/assets/swissport-logo.png";
 
+export const links = new Map<string, { name: string; link: string }>([
+  ["youtube", { link: "/", name: "test" }],
+  ["test2", { link: "/", name: "test2" }],
+  ["test3", { link: "/", name: "test3" }],
+]);
+
+export const copyright = (key: string, value: string) => {
+  const testData = new Map([[key, value]]);
+  return testData.get(key);
+};
+
 export interface ExternalLinksInfo {
   src?: ReactNode;
   href?: string;
@@ -23,18 +34,6 @@ export const externalLinks = new Map<string, ExternalLinksInfo>([
       href: "https://www.swissport.co.il/heb/Main/",
     },
   ],
-]);
-
-interface IconInfo {
-  tag: ReactNode;
-  href: string;
-}
-
-export const icons = new Map<string, IconInfo>([
-  ["youtube", { tag: createElement(FaYoutube), href: "/" }],
-  ["facebook", { tag: createElement(FaFacebook), href: "/" }],
-  ["instagram", { tag: createElement(FaInstagram), href: "/" }],
-  ["test", { tag: createElement(FaInstagram), href: "/" }],
 ]);
 
 export const payload = new Map([
@@ -91,8 +90,3 @@ export const payload = new Map([
     },
   ],
 ]);
-
-export const copyright = (key: string, value: string) => {
-  const testData = new Map([[key, value]]);
-  return testData.get(key);
-};

@@ -1,28 +1,17 @@
 import { Fragment } from "react";
-import { ExternalLinks, ExternalLinksContainer } from "./FooterStyles";
+import { ExternalLink } from "./FooterStyles";
 import { externalLinks } from "./footerData";
 import { ExternalLinksInfo } from "./footerData";
-// Interface for the properties of each link
-
-// Component to render individual external links
-const FooterExternalLink: React.FC<ExternalLinksInfo> = ({
-  src,
-  href,
-}: ExternalLinksInfo): JSX.Element => {
-  return (
-    <Fragment>
-      <ExternalLinks href={href}>{src}</ExternalLinks>
-    </Fragment>
-  );
-};
 
 // Component to render the entire grid of external links
-export const FooterExternalLinks = () => (
-  <ExternalLinksContainer>
+export const FooterExternalLinks: React.FC<ExternalLinksInfo> = () => (
+  <Fragment>
     {Array.from(externalLinks).map(([key, value]) => (
-      <FooterExternalLink key={key} {...value} />
+      <ExternalLink key={key} target="_blank" href={value.href}>
+        {value.src}
+      </ExternalLink>
     ))}
-  </ExternalLinksContainer>
+  </Fragment>
 );
 
 export default FooterExternalLinks;

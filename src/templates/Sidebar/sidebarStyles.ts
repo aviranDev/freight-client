@@ -6,8 +6,7 @@ export const SidebarContainer = styled.div`
   min-height: 150px;
   background: #16102E;
   /* background: #5C5470; */
-  border-left: 2px solid ${color.text1}; /* Fix the typo here */
-  border-right: 2px solid ${color.text1}; /* Fix the typo here */
+  border-left: 1px solid ${color.text1}; /* Fix the typo here */
 `;
 
 export const SidebarInnerContainer = styled.div`
