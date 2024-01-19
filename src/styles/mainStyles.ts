@@ -22,11 +22,6 @@ export const TemplateContainer = styled.div`
     grid-template-columns: 1fr 1fr 1fr 245px; 
 
   @media (max-width: 700px) {
-    grid-template-areas:
-      "nav"
-      "main"
-      "footer"
-      "sidebar"; /* Add the sidebar area for smaller screens */
       display: flex;
     flex-direction: column;
   }

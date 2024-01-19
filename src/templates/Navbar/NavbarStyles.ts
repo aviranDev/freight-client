@@ -9,7 +9,7 @@ export const NavbarContainer = styled.nav`
   grid-area: nav;
   padding: 0rem;
   color: ${text1};
-  border-bottom: 2px solid ${text1}; /* Fix the typo here */
+  border-bottom: 1px solid ${text1}; /* Fix the typo here */
 `;
 
 export const NavbarInnerContainer = styled.div`

@@ -1,35 +1,34 @@
-import { icons, copyright } from "./footerData";
-import { FooterIcons } from "./FooterIcon";
-
-/* LAYOUT */
 import {
-  IconsContainer,
-  FooterContainer,
   FooterWrapper,
   CenteredBorder,
-  FooterCopyright,
+  FooterSectionThree,
+  FooterSectionTwo,
+  FooterSectionOne,
 } from "./FooterStyles";
-
-/* SECTIONS */
 import { FooterInternalLinks } from "./InternalLinks";
 import { FooterExternalLinks } from "./ExternalLinks";
+import CopyRight from "./CopyRight";
+import LinksWeb from "./Links";
+import { links } from "./footerData";
+import { payload } from "./footerData";
 
 const Footer = (): JSX.Element => (
-  <FooterContainer>
-    <FooterWrapper>{<FooterInternalLinks />}</FooterWrapper>
+  <FooterWrapper>
+    <FooterSectionOne>
+      <FooterInternalLinks payload={payload} />
+    </FooterSectionOne>
 
     <CenteredBorder />
 
-    <FooterExternalLinks />
-    <IconsContainer>
-      {/*    {Array.from(icons).map(([key, value]) => (
-        <FooterIcons key={key} icon={value} />
-      ))} */}
-    </IconsContainer>
-    <FooterCopyright>
-      {copyright("copyright", "Freight")} &copy; {new Date().getFullYear()}
-    </FooterCopyright>
-  </FooterContainer>
+    <FooterSectionTwo>
+      <FooterExternalLinks />
+    </FooterSectionTwo>
+
+    <FooterSectionThree>
+      <LinksWeb links={links} />
+      <CopyRight value="Freight" />
+    </FooterSectionThree>
+  </FooterWrapper>
 );
 
 export default Footer;
