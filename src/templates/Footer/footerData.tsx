@@ -36,7 +36,7 @@ export const externalLinks = new Map<string, ExternalLinksInfo>([
   ],
 ]);
 
-export const payload = new Map([
+export const linksData = new Map([
   [
     "menu",
     {
