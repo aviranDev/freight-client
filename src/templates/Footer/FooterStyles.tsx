@@ -13,7 +13,7 @@ export const FooterWrapper: FC<FooterProps> = styled.div`
   border-top: ${({ bTop }) => bTop || `1px solid ${clrs.bTop || "#000"}`};
 `;
 
-export const FooterSectionOne: FC<FooterProps> = styled.div`
+export const FooterSection1: FC<FooterProps> = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   max-width: ${({ maxW }) => maxW || "1290px"};
@@ -30,24 +30,22 @@ export const FooterSectionOne: FC<FooterProps> = styled.div`
   }
 `;
 
-export const FooterSectionTwo: React.FC<FooterProps> = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, minmax(150px, 1fr));
-  max-width: ${({ maxW }) => maxW || "1000px"};
-  padding: 1rem;
-  place-items: center;
-  margin: 0 auto;
-
-  @media screen and (max-width: 900px) {
-    & > :first-child,
-    & > :last-child {
-      padding-left: 2%;
-      padding-right: 2%;
-    }
-  }
+export const CenteredBorder: FC<FooterProps> = styled.div`
+  display: flex;
+  max-width: ${({ maxW }) => maxW ?? "1100px"};
+  border-top: ${({ bTop }) => bTop || `1px solid ${clrs.border || "#000"}`};
+  margin: auto;
 `;
 
-export const FooterSectionThree: React.FC<FooterProps> = styled.div`
+export const FooterSection2: React.FC<FooterProps> = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  max-width: ${({ maxW }) => maxW || "1000px"};
+  padding: ${({ pad }) => pad ?? "1rem"};
+  margin: 0 auto;
+`;
+
+export const FooterSection3: React.FC<FooterProps> = styled.div`
   display: flex;
   justify-content: center;
   background-color: ${({ bgc }) => bgc ?? "#16102e"};
@@ -57,16 +55,15 @@ export const FooterSectionThree: React.FC<FooterProps> = styled.div`
   padding: ${({ pad }) => pad ?? "1rem"};
 `;
 
-/**
- * **********************************************************************************
- */
-
 export const FooterLinkContainer: React.FC<FooterProps> = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: ${({ m }) => m ?? "10px"};
-  margin-top: ${({ mt }) => mt ?? "1.5rem"};
+  margin: ${({ m }) => m ?? "1.5rem 0 1rem 0"};
 `;
+
+/**
+ * **********************************************************************************
+ */
 
 export const FooterLinkTitle: React.FC<FooterProps> = styled.h2`
   margin-bottom: ${({ mb }) => mb ?? "16px"};
@@ -91,15 +88,6 @@ export const FooterLinkItem: FC<FooterProps> = styled(Link)`
     color: ${({ hvr }) => hvr ?? text1};
     transition: 0.3s ease-out;
   }
-`;
-
-export const CenteredBorder: FC<FooterProps> = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: ${({ maxW }) => maxW ?? "1100px"};
-  border-top: ${({ bTop }) => bTop || `1px solid ${clrs.border || "#000"}`};
-  margin: auto;
 `;
 
 export const ExternalLink: React.FC<FooterProps> = styled.a`

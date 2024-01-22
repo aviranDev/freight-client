@@ -1,33 +1,33 @@
 import {
   FooterWrapper,
   CenteredBorder,
-  FooterSectionThree,
-  FooterSectionTwo,
-  FooterSectionOne,
+  FooterSection3,
+  FooterSection2,
+  FooterSection1,
 } from "./FooterStyles";
-import { FooterInternalLinks } from "./InternalLinks";
+import { InternalLinks } from "./InternalLinks";
 import { FooterExternalLinks } from "./ExternalLinks";
 import CopyRight from "./CopyRight";
 import LinksWeb from "./Links";
-import { links } from "./footerData";
-import { payload } from "./footerData";
+import { links, linksData } from "./footerData";
 
 const Footer = (): JSX.Element => (
   <FooterWrapper>
-    <FooterSectionOne>
-      <FooterInternalLinks payload={payload} />
-    </FooterSectionOne>
+    <FooterSection1>
+      <InternalLinks payload={linksData} />
+    </FooterSection1>
 
     <CenteredBorder />
 
-    <FooterSectionTwo>
+    <FooterSection2>
+      {/* works */}
       <FooterExternalLinks />
-    </FooterSectionTwo>
+    </FooterSection2>
 
-    <FooterSectionThree>
+    <FooterSection3>
       <LinksWeb links={links} />
       <CopyRight value="Freight" />
-    </FooterSectionThree>
+    </FooterSection3>
   </FooterWrapper>
 );
 
