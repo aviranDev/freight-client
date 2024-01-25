@@ -1,16 +1,14 @@
-const CopyRight = ({ value }: { value: string }) => (
-  <div
-    style={{
-      fontSize: "18px",
-    }}
-  >
+import FooterStyle from "./FooterStyles";
+
+export const FooterCopyright = ({ value }: { value: string }) => (
+  <FooterStyle.CopyrightContainer>
     {value} &copy;{" "}
-    <span style={{ marginRight: "5px" }}>{new Date().getFullYear()}</span>
+    <span className="current-year">{new Date().getFullYear()}</span>
     <span>
       All rights reserved. Use of this site signifies your agreement to the
       terms of use.
     </span>
-  </div>
+  </FooterStyle.CopyrightContainer>
 );
 
-export default CopyRight;
+export default FooterCopyright;

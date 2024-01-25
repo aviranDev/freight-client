@@ -1,27 +1,24 @@
-import { FC } from "react";
-import {
-  FooterLinkContainer,
-  FooterLinkTitle,
-  FooterLinkItem,
-} from "./FooterStyles";
+import FooterStyle from "./FooterStyles";
 
 interface InternalLinksProps {
   payload: Map<string, { links: { path: string; to: string }[] }>;
 }
 
-export const InternalLinks: FC<InternalLinksProps> = ({ payload }) => (
+export const FooterInternalLinks: React.FC<InternalLinksProps> = ({
+  payload,
+}) => (
   <>
     {Array.from(payload).map(([key, value]) => (
-      <FooterLinkContainer key={key}>
-        <FooterLinkTitle>{key}</FooterLinkTitle>
+      <FooterStyle.InternalLinkContainer key={key}>
+        <FooterStyle.InternalLinkTitle>{key}</FooterStyle.InternalLinkTitle>
         {value.links.map((val) => (
-          <FooterLinkItem key={val.path} to={val.to}>
+          <FooterStyle.InternalLinkItem key={val.path} to={val.to}>
             {val.path}
-          </FooterLinkItem>
+          </FooterStyle.InternalLinkItem>
         ))}
-      </FooterLinkContainer>
+      </FooterStyle.InternalLinkContainer>
     ))}
   </>
 );
 
-export default InternalLinks;
+export default FooterInternalLinks;
