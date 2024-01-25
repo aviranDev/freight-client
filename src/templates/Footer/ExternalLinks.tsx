@@ -1,17 +1,20 @@
-import { Fragment } from "react";
-import { ExternalLink } from "./FooterStyles";
-import { externalLinks } from "./footerData";
-import { ExternalLinksInfo } from "./footerData";
+import FooterStyle from "./FooterStyles";
+import { ReactNode } from "react";
 
-// Component to render the entire grid of external links
-export const FooterExternalLinks: React.FC<ExternalLinksInfo> = () => (
-  <Fragment>
-    {Array.from(externalLinks).map(([key, value]) => (
-      <ExternalLink key={key} target="_blank" href={value.href}>
-        {value.src}
-      </ExternalLink>
+interface ExternalLinksInfo {
+  payload: Map<string, { image?: ReactNode; href?: string }>;
+}
+
+export const FooterExternalLinks: React.FC<ExternalLinksInfo> = ({
+  payload,
+}) => (
+  <>
+    {Array.from(payload).map(([key, value]) => (
+      <FooterStyle.ExternalLinkImg key={key} target="_blank" href={value.href}>
+        {value.image}
+      </FooterStyle.ExternalLinkImg>
     ))}
-  </Fragment>
+  </>
 );
 
 export default FooterExternalLinks;

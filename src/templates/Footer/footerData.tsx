@@ -1,12 +1,10 @@
-import { ReactNode, createElement } from "react";
-import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import { ReactNode } from "react";
 import mamanLink from "/assets/maman-logo.png";
 import swissportLink from "/assets/swissport-logo.png";
 
 export const links = new Map<string, { name: string; link: string }>([
-  ["youtube", { link: "/", name: "test" }],
-  ["test2", { link: "/", name: "test2" }],
-  ["test3", { link: "/", name: "test3" }],
+  ["youtube", { link: "/", name: "about-us" }],
+  ["test2", { link: "/", name: "terms of use" }],
 ]);
 
 export const copyright = (key: string, value: string) => {
@@ -14,23 +12,21 @@ export const copyright = (key: string, value: string) => {
   return testData.get(key);
 };
 
-export interface ExternalLinksInfo {
-  src?: ReactNode;
-  href?: string;
-}
-
-export const externalLinks = new Map<string, ExternalLinksInfo>([
+export const externalLinks = new Map<
+  string,
+  { image?: ReactNode; href?: string }
+>([
   [
     "maman",
     {
-      src: <img src={mamanLink} alt="maman-logo" />,
+      image: <img src={mamanLink} alt="maman-logo" />,
       href: "https://mamanonline.maman.co.il/",
     },
   ],
   [
     "swissport",
     {
-      src: <img src={swissportLink} alt="swissport-logo" />,
+      image: <img src={swissportLink} alt="swissport-logo" />,
       href: "https://www.swissport.co.il/heb/Main/",
     },
   ],

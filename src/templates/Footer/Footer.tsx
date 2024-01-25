@@ -1,34 +1,29 @@
-import {
-  FooterWrapper,
-  CenteredBorder,
-  FooterSection3,
-  FooterSection2,
-  FooterSection1,
-} from "./FooterStyles";
-import { InternalLinks } from "./InternalLinks";
+import FooterStyle from "./FooterStyles";
+import { FooterInternalLinks } from "./InternalLinks";
 import { FooterExternalLinks } from "./ExternalLinks";
-import CopyRight from "./CopyRight";
-import LinksWeb from "./Links";
+import { FooterCopyright } from "./CopyRight";
+import { FooterWebInfo } from "./WebInfo";
 import { links, linksData } from "./footerData";
+import { externalLinks } from "./footerData";
 
+// Footer component definition
 const Footer = (): JSX.Element => (
-  <FooterWrapper>
-    <FooterSection1>
-      <InternalLinks payload={linksData} />
-    </FooterSection1>
+  <FooterStyle.Wrapper>
+    <FooterStyle.Section1>
+      <FooterInternalLinks payload={linksData} />
+    </FooterStyle.Section1>
 
-    <CenteredBorder />
+    <FooterStyle.CenteredBorder />
 
-    <FooterSection2>
-      {/* works */}
-      <FooterExternalLinks />
-    </FooterSection2>
+    <FooterStyle.Section2>
+      <FooterExternalLinks payload={externalLinks} />
+    </FooterStyle.Section2>
 
-    <FooterSection3>
-      <LinksWeb links={links} />
-      <CopyRight value="Freight" />
-    </FooterSection3>
-  </FooterWrapper>
+    <FooterStyle.Section3>
+      <FooterWebInfo links={links} />
+      <FooterCopyright value="Freight" />
+    </FooterStyle.Section3>
+  </FooterStyle.Wrapper>
 );
 
 export default Footer;
