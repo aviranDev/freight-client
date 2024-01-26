@@ -1,16 +1,14 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FooterProps } from "./interface";
-import { color } from "../../styles/colors";
-const { primary, text1, text2 } = color;
 
 const FooterStyle = {
   Wrapper: styled.div<FooterProps>`
     grid-area: ${({ gArea }) => gArea ?? "footer"};
-    background: ${({ bgc }) => bgc || primary || "#000"};
+    background: ${({ bgc }) => bgc ?? "var(--text-color)"};
     padding: ${({ p }) => p ?? ""};
     border-top: ${({ pt, theme }) =>
-      pt || `1px solid ${text1 || theme || "#000"}`};
+      pt ?? `1px solid ${"var(--accent-color)" ?? theme}`};
   `,
   Section1: styled.div<FooterProps>`
     display: grid;
@@ -19,7 +17,7 @@ const FooterStyle = {
     margin: 0 auto;
     justify-items: center;
     margin-top: ${({ pt }) => pt || "8px"};
-    background-color: ${({ bgc }) => bgc || ""};
+    background-color: ${({ bgc }) => bgc ?? "none"};
 
     @media screen and (max-width: 550px) {
       display: flex;
@@ -32,7 +30,7 @@ const FooterStyle = {
     display: flex;
     max-width: ${({ maxW }) => maxW ?? "1100px"};
     border-top: ${({ pt, theme }) =>
-      pt || `1px solid ${"rgba(255, 132, 132, 0.2)" || theme || "#000"}`};
+      pt ?? `1px solid ${"var(--accent-color)" ?? theme}`};
     margin: auto;
   `,
   Section2: styled.div<FooterProps>`
@@ -45,11 +43,11 @@ const FooterStyle = {
   Section3: styled.div<FooterProps>`
     display: flex;
     justify-content: center;
-    background-color: ${({ bgc }) => bgc ?? "#16102e"};
-    color: ${({ clr }) => clr || text2 || "#000"};
+    background-color: ${({ bgc }) => bgc ?? "var(--primary-color)"};
+    color: ${({ clr }) => clr ?? ""};
     font-size: ${({ fSize }) => fSize ?? "0.9rem"};
     border-top: ${({ pt, theme }) =>
-      pt ?? `1px solid ${text1 || theme || "#000"}`};
+      pt ?? `1px solid ${"var(--accent-color)" ?? theme}`};
     padding: ${({ p }) => p ?? "1rem"};
   `,
   InternalLinkContainer: styled.div<FooterProps>`
@@ -59,14 +57,14 @@ const FooterStyle = {
   `,
   InternalLinkTitle: styled.h2<FooterProps>`
     margin-bottom: ${({ mb }) => mb ?? "16px"};
-    color: ${({ clr }) => clr || text1 || "#000"};
+    color: ${({ clr }) => clr ?? "var(--background-color)"};
     font-size: ${({ fSize }) => fSize ?? "22px"};
     text-transform: capitalize;
     align-self: flex-start;
     font-weight: 700;
   `,
   InternalLinkItem: styled(Link)<FooterProps>`
-    color: ${({ clr }) => clr || text2 || "#000"};
+    color: ${({ clr }) => clr ?? "var(--accent-color)"};
     text-decoration: none;
     margin-bottom: ${({ mb }) => mb ?? "0.7rem"};
     align-self: flex-start;
@@ -77,7 +75,7 @@ const FooterStyle = {
     transition: 0.3s ease-out;
 
     &:hover {
-      color: ${({ hvr }) => hvr ?? text1};
+      color: ${({ hvr }) => hvr ?? "var(--background-color)"};
     }
   `,
   ExternalLinkImg: styled.a<FooterProps>`
@@ -88,18 +86,18 @@ const FooterStyle = {
   `,
   LinksWebInfo: styled(Link)<FooterProps>`
     margin-right: ${({ mr }) => mr ?? "4rem"};
-    color: ${({ clr }) => clr || text2 || "#000"};
+    color: ${({ clr }) => clr ?? "var(--accent-color)"};
     font-size: ${({ fSize }) => fSize ?? "15px"};
     text-decoration: none;
     text-transform: capitalize;
 
     &:hover {
-      color: ${({ hvr }) => hvr || text1 || "#000"};
+      color: ${({ hvr }) => hvr ?? "var(--background-color)"};
     }
   `,
   CopyrightContainer: styled.div<FooterProps>`
     font-size: ${({ fSize }) => fSize ?? "15px"};
-    color: ${({ clr }) => clr || text2 || "#000"};
+    color: ${({ clr }) => clr ?? "var(--accent-color)"};
 
     .current-year {
       margin-right: 5px;

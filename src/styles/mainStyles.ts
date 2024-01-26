@@ -7,6 +7,19 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     font-family: 'Montserrat', sans-serif;
   }
+
+  :root {
+    --primary-color: #0d1b2a;     
+    --secondary-color: #415a77;   
+    --accent-color: #778da9;      
+    --background-color: #e0e1dd;  
+    --text-color: #1b263b;       
+  }
+
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
 `;
 
 export const TemplateContainer = styled.div`
