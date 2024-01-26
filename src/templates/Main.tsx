@@ -2,7 +2,6 @@ import React, { ReactNode } from "react";
 import styled from "styled-components";
 
 const MainContainer = styled.main`
-  color: red;
   grid-area: main;
 `;
 
