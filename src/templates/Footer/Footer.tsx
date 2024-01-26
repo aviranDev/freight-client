@@ -1,7 +1,7 @@
 import FooterStyle from "./FooterStyles";
+import FooterCopyright from "./CopyRight";
+import FooterExternalLinks from "./ExternalLinks";
 import { FooterInternalLinks } from "./InternalLinks";
-import { FooterExternalLinks } from "./ExternalLinks";
-import { FooterCopyright } from "./CopyRight";
 import { FooterWebInfo } from "./WebInfo";
 import { links, linksData } from "./footerData";
 import { externalLinks } from "./footerData";

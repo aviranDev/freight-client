@@ -17,17 +17,17 @@ export const externalLinks = new Map<
   { image?: ReactNode; href?: string }
 >([
   [
-    "maman",
-    {
-      image: <img src={mamanLink} alt="maman-logo" />,
-      href: "https://mamanonline.maman.co.il/",
-    },
-  ],
-  [
     "swissport",
     {
       image: <img src={swissportLink} alt="swissport-logo" />,
       href: "https://www.swissport.co.il/heb/Main/",
+    },
+  ],
+  [
+    "maman",
+    {
+      image: <img src={mamanLink} alt="maman-logo" />,
+      href: "https://mamanonline.maman.co.il/",
     },
   ],
 ]);
