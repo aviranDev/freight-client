@@ -1,15 +1,37 @@
 import FooterStyle from "./FooterStyles";
+import {
+  validateString,
+  ValidationErrorMessage,
+} from "../../utils/validateString";
 
 /**
- * FooterCopyright component represents the copyright section in the footer.
- * It displays the company name, the copyright symbol, the current year, and the terms of use.
+ * FooterCopyright component displays copyright information.
  *
- * @param {string} value - The company name or value to be displayed in the copyright section.
+ * @component
+ * @example
+ * // Usage:
+ * <FooterCopyright value="Your Company Name" />
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.value - The company name or value to be displayed in the copyright section.
+ * @returns {JSX.Element} FooterCopyright component.
  */
-const FooterCopyright = ({ value }: { value: string }) => {
-  const currentYear = new Date().getFullYear();
+function FooterCopyright({ value }: { value: string }): JSX.Element {
+  // Validate the input value
+  if (!validateString(value)) {
+    return (
+      // Display an error message if validation fails
+      <ValidationErrorMessage
+        message={`Invalid value provided for FooterCopyright: ${value}`}
+      />
+    );
+  }
+
+  // Get the current year dynamically.
+  const currentYear: number = new Date().getFullYear();
 
   return (
+    // Render the copyright container with the valid value and current year
     <FooterStyle.CopyrightContainer>
       {value} &copy; <span className="current-year">{currentYear}</span>
       <span>
@@ -18,6 +40,6 @@ const FooterCopyright = ({ value }: { value: string }) => {
       </span>
     </FooterStyle.CopyrightContainer>
   );
-};
+}
 
 export default FooterCopyright;

@@ -2,16 +2,21 @@ import { ReactNode } from "react";
 import mamanLink from "/assets/maman-logo.png";
 import swissportLink from "/assets/swissport-logo.png";
 
+// Map of named links
 export const links = new Map<string, { name: string; link: string }>([
-  ["youtube", { link: "/", name: "about-us" }],
-  ["test2", { link: "/", name: "terms of use" }],
+  ["about-us", { link: "/", name: "about-us" }],
+  ["terms of use", { link: "/", name: "terms of use" }],
 ]);
 
+// Function to retrieve a value from a map based on a key
 export const copyright = (key: string, value: string) => {
-  const testData = new Map([[key, value]]);
-  return testData.get(key);
+  // Create a temporary Map with a single key-value pair
+  const data = new Map([[key, value]]);
+  // Return the value associated with the specified key
+  return data.get(key);
 };
 
+// Map of external links with optional images
 export const externalLinks = new Map<
   string,
   { image?: ReactNode; href?: string }
@@ -32,6 +37,7 @@ export const externalLinks = new Map<
   ],
 ]);
 
+// Map of links data organized by sections
 export const linksData = new Map([
   [
     "menu",
