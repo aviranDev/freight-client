@@ -1,42 +1,38 @@
 import styled from "styled-components";
 import { HashLink } from "react-router-hash-link";
+import TemplateProps from "../TemplateProps";
 
-export const NavbarContainer = styled.nav`
-  background: #000;
-  grid-area: nav;
-  padding: 0rem;
-  color: #fff;
-  border-bottom: 1px solid #ccc;
-`;
+const NavbarStyle = {
+  Wrapper: styled.div<TemplateProps>`
+    grid-area: ${({ gArea }) => gArea ?? "nav"};
+    background: ${({ bgc }) => bgc ?? "var(--accent-color)"};
+    padding: ${({ p }) => p ?? "0rem"};
+    border-bottom: ${({ pt, theme }) =>
+      pt ?? `1px solid ${"var(--secondary-color)" ?? theme}`};
+  `,
+  InnerContainer: styled.div`
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+  `,
+  LeftContainer: styled.div`
+    display: flex;
+    order: 0;
 
-export const NavbarInnerContainer = styled.div`
-  width: 100%;
-  height: 70px;
-  display: flex;
-  justify-content: flex-end;
-`;
+    @media (max-width: 800px) {
+      display: none;
+    }
+  `,
+  RightContainer: styled.div`
+    display: flex;
+    order: 1;
 
-export const LeftContainer = styled.div`
-  flex: 70%;
-  display: flex;
-  padding-left: 5%;
-
-  @media (max-width: 800px) {
-    display: none;
-  }
-`;
-
-export const Container = styled.div`
-  display: flex;
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 0px 0px;
-  min-height: 100vh;
-  @media screen and (max-width: 960px) {
-    padding: 0 10px;
-  }
-`;
+    @media (max-width: 800px) {
+      display: none;
+    }
+  `,
+};
 
 export const NavbarLinkInternal = styled(HashLink)`
   color: #fff;
@@ -47,16 +43,6 @@ export const NavbarLinkInternal = styled(HashLink)`
     background: none;
     color: #fff;
     transition: 0.5s ease-out;
-  }
-`;
-
-export const RightContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 5%;
-
-  @media (max-width: 900px) {
-    display: none;
   }
 `;
 
@@ -74,3 +60,5 @@ export const DropdownMenuContainer = styled.div`
   margin: 20px;
   text-align: center;
 `;
+
+export default NavbarStyle;

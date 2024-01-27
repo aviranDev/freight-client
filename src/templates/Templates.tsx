@@ -13,7 +13,7 @@ interface TemplatesProps {
 const Templates: React.FC<TemplatesProps> = ({ children }) => (
   <TemplateContainer>
     <GlobalStyles />
-    {/* <Header /> */}
+    <Header />
     <Main>{children}</Main>
     {/* <Sidebar /> */}
     <Footer />

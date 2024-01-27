@@ -17,7 +17,8 @@ export const generalNav: GeneralNavType = new Map([
 
 export const userNav = (): UserNavType => {
   const mapEntries: Array<[string, UserNavEntry]> = [
-    ['emplyee', { role: 'emplyee', path: '/dashboard' }],
+    ['emplyee', { role: 'employee', path: '/dashboard' }],
+    ['emplyee1', { role: 'employee', path: '/dashboard' }],
     ['admin', { role: 'admin', path: '/admin-dashboard' }],
   ];
 

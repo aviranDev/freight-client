@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { FooterProps } from "./interface";
+import TemplateProps from "../TemplateProps";
 
 /**
  * Styled components for the Footer section of the application.
  */
 const FooterStyle = {
   // Wrapper for the entire Footer section
-  Wrapper: styled.div<FooterProps>`
+  Wrapper: styled.div<TemplateProps>`
     grid-area: ${({ gArea }) => gArea ?? "footer"};
     background: ${({ bgc }) => bgc ?? "var(--text-color)"};
     padding: ${({ p }) => p ?? ""};
@@ -16,7 +16,7 @@ const FooterStyle = {
   `,
 
   // Section1 styling for internal links
-  Section1: styled.div<FooterProps>`
+  Section1: styled.div<TemplateProps>`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     max-width: ${({ maxW }) => maxW || "1290px"};
@@ -34,7 +34,7 @@ const FooterStyle = {
   `,
 
   // CenteredBorder between sections
-  CenteredBorder: styled.div<FooterProps>`
+  CenteredBorder: styled.div<TemplateProps>`
     display: flex;
     max-width: ${({ maxW }) => maxW ?? "1100px"};
     border-top: ${({ pt, theme }) =>
@@ -43,7 +43,7 @@ const FooterStyle = {
   `,
 
   // Section2 styling for external links
-  Section2: styled.div<FooterProps>`
+  Section2: styled.div<TemplateProps>`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     max-width: ${({ maxW }) => maxW || "1000px"};
@@ -52,7 +52,7 @@ const FooterStyle = {
   `,
 
   // Section3 styling for web links and copyright
-  Section3: styled.div<FooterProps>`
+  Section3: styled.div<TemplateProps>`
     display: flex;
     justify-content: center;
     background-color: ${({ bgc }) => bgc ?? "var(--primary-color)"};
@@ -64,14 +64,14 @@ const FooterStyle = {
   `,
 
   // Container for internal links
-  InternalLinkContainer: styled.div<FooterProps>`
+  InternalLinkContainer: styled.div<TemplateProps>`
     display: flex;
     flex-direction: column;
     margin: ${({ m }) => m ?? "1.5rem 0 1rem 0"};
   `,
 
   // Title styling for internal links
-  InternalLinkTitle: styled.h2<FooterProps>`
+  InternalLinkTitle: styled.h2<TemplateProps>`
     margin-bottom: ${({ mb }) => mb ?? "16px"};
     color: ${({ clr }) => clr ?? "var(--background-color)"};
     font-size: ${({ fSize }) => fSize ?? "22px"};
@@ -81,7 +81,7 @@ const FooterStyle = {
   `,
 
   // Styling for individual internal links
-  InternalLinkItem: styled(Link)<FooterProps>`
+  InternalLinkItem: styled(Link)<TemplateProps>`
     color: ${({ clr }) => clr ?? "var(--accent-color)"};
     text-decoration: none;
     margin-bottom: ${({ mb }) => mb ?? "0.7rem"};
@@ -98,7 +98,7 @@ const FooterStyle = {
   `,
 
   // Styling for external links with images
-  ExternalLinkImg: styled.a<FooterProps>`
+  ExternalLinkImg: styled.a<TemplateProps>`
     align-self: baseline;
     img {
       width: ${({ imgWith }) => imgWith ?? "150px"};
@@ -106,7 +106,7 @@ const FooterStyle = {
   `,
 
   // Styling for web links
-  LinksWebInfo: styled(Link)<FooterProps>`
+  LinksWebInfo: styled(Link)<TemplateProps>`
     margin-right: ${({ mr }) => mr ?? "4rem"};
     color: ${({ clr }) => clr ?? "var(--accent-color)"};
     font-size: ${({ fSize }) => fSize ?? "15px"};
@@ -119,7 +119,7 @@ const FooterStyle = {
   `,
 
   // Styling for the copyright container
-  CopyrightContainer: styled.div<FooterProps>`
+  CopyrightContainer: styled.div<TemplateProps>`
     font-size: ${({ fSize }) => fSize ?? "15px"};
     color: ${({ clr }) => clr ?? "var(--accent-color)"};
 
