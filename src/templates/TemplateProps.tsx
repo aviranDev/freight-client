@@ -1,12 +1,12 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-export interface FooterProps
+interface TemplateProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  '--primary-color'?: string;
-  '--secondary-color'?: string;
-  '--accent-color'?: string;
-  '--background-color'?: string;
-  '--text-color'?: string;
+  "--primary-color"?: string;
+  "--secondary-color"?: string;
+  "--accent-color"?: string;
+  "--background-color"?: string;
+  "--text-color"?: string;
   gArea?: string;
   bgc?: string;
   p?: string;
@@ -21,4 +21,7 @@ export interface FooterProps
   hvr?: string;
   imgWith?: string;
   mr?: string;
+  generalNav?: string;
 }
+
+export default TemplateProps;
