@@ -1,29 +1,24 @@
-import { createElement, ReactNode } from 'react';
+import { FaHome, FaQuestion } from "react-icons/fa";
 
-interface UserNavEntry {
-  role: string;
-  path: string;
-}
 
-type GeneralNavType = Map<string, string>;
-export type UserNavType = Map<string | ReactNode, UserNavEntry>;
+
+export type GeneralNavType = Map<string, {
+  name: React.FC | string;
+  link: string
+  title: string
+}>;
 type GuestNavType = Map<string, string>;
 
 export const generalNav: GeneralNavType = new Map([
-  ['Home', '/'],
-  ['About', '/about'],
-  ['Cards', '/#cards'],
+  ['home', { name: FaHome, link: '/', title: "Home" }],
+  ['about', { name: FaQuestion, link: '/', title: 'About us' }],
 ]);
 
-export const userNav = (): UserNavType => {
-  const mapEntries: Array<[string, UserNavEntry]> = [
-    ['emplyee', { role: 'employee', path: '/dashboard' }],
-    ['emplyee1', { role: 'employee', path: '/dashboard' }],
-    ['admin', { role: 'admin', path: '/admin-dashboard' }],
-  ];
-
-  return new Map<string, UserNavEntry>(mapEntries);
-};
+export const userNav: Map<string, { role: string; path: string; }> = new Map([
+  ['employee', { role: 'employee', path: '/dashboard' }],
+  ['employee1', { role: 'employee', path: '/dashboard' }],
+  ['admin', { role: 'admin', path: '/admin-dashboard' }],
+]);
 
 
 export const guestNav: GuestNavType = new Map([

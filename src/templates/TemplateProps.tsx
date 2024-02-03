@@ -7,12 +7,12 @@ interface TemplateProps
   "--accent-color"?: string;
   "--background-color"?: string;
   "--text-color"?: string;
+  maxWidth?: string;
   gArea?: string;
   bgc?: string;
   p?: string;
   pt?: string;
   theme?: string;
-  maxW?: string;
   clr?: string;
   fSize?: string;
   m?: string;
@@ -22,6 +22,9 @@ interface TemplateProps
   imgWith?: string;
   mr?: string;
   generalNav?: string;
+  order?: number;
+  $isvisible?: boolean;
+  title1?: string;
 }
 
 export default TemplateProps;

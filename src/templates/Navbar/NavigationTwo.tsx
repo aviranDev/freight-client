@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { RightContainer, Container, NavbarLinkInternal } from "./NavbarStyles";
+import NavbarStyle from "./NavbarStyles";
 import { UserNavType, userNav } from "./navData";
 import { Link } from "react-router-dom";
 
@@ -34,12 +34,12 @@ const NavigationTwo: React.FC<RightNavigationProps> = (props) => {
         <>
           {user ? (
             <Fragment>
-              {Array.from(userNav()).map(([key, value]) => (
-                <Fragment>
+              {Array.from(userNav).map(([key, value]) => (
+                <Fragment key={key}>
                   {value.role === (user as { role: string }).role && (
-                    <NavbarLinkInternal to={value.path}>
+                    <NavbarStyle.NavLinkInternal to={value.path}>
                       {key}
-                    </NavbarLinkInternal>
+                    </NavbarStyle.NavLinkInternal>
                   )}
                 </Fragment>
               ))}

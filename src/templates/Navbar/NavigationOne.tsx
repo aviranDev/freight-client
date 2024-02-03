@@ -1,14 +1,19 @@
 import React, { Fragment } from "react";
-import { NavbarLinkInternal, LeftContainer } from "./NavbarStyles";
+import NavbarStyle from "./NavbarStyles";
+import { GeneralNavType } from "./navData";
 
-const NavigationOne: React.FC<{ generalNav: Map<string, string> }> = (
-  props,
-) => {
+interface NavigationOneProps {
+  generalNav: GeneralNavType;
+}
+
+const NavigationOne: React.FC<NavigationOneProps> = ({ generalNav }) => {
   return (
     <>
-      {Array.from(props.generalNav).map(([key, value]) => (
+      {Array.from(generalNav).map(([key, value]) => (
         <Fragment key={key}>
-          <NavbarLinkInternal to={value}>{key}</NavbarLinkInternal>
+          <NavbarStyle.NavLinkInternal to={value.link} title1={value.title}>
+            {typeof value.name === "string" ? value.name : <value.name />}
+          </NavbarStyle.NavLinkInternal>
         </Fragment>
       ))}
     </>
