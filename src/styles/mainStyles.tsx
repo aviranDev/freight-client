@@ -34,10 +34,10 @@ export const TemplateContainer = styled.div`
     "sidebar footer footer footer";
   text-align: center;
   transition: all 0.25s ease-in-out;
-  grid-template-rows: 0.3fr 3fr 1.5fr;
+  grid-template-rows: 0.3fr 3fr auto;
   grid-template-columns: 15% 1fr 1fr 1fr;
 
-  @media (max-width: 600px) {
+  @media (max-width: 1200px) {
     /* Flex Container for Small Screens */
     display: flex;
     flex-direction: column;

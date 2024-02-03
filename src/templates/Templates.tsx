@@ -14,8 +14,8 @@ const Templates: React.FC<TemplatesProps> = ({ children }) => (
   <TemplateContainer>
     <GlobalStyles />
     <Header />
+    <Sidebar />
     <Main>{children}</Main>
-    {/* <Sidebar /> */}
     <Footer />
   </TemplateContainer>
 );

@@ -3,8 +3,7 @@ import FooterCopyright from "./CopyRight";
 import FooterExternalLinks from "./ExternalLinks";
 import FooterInternalLinks from "./InternalLinks";
 import FooterWebInfo from "./WebInfo";
-import { links, linksData } from "./footerData";
-import { externalLinks } from "./footerData";
+import { footerLinks, internalLinks, externalLinks } from "./footerData";
 
 /**
  * Footer component displays the footer section of the website.
@@ -16,7 +15,7 @@ function Footer(): JSX.Element {
     <FooterStyle.Wrapper>
       {/* Section 1: Internal Links */}
       <FooterStyle.Section1>
-        <FooterInternalLinks payload={linksData} />
+        <FooterInternalLinks payload={internalLinks} />
       </FooterStyle.Section1>
 
       {/* Divider between sections */}
@@ -29,7 +28,7 @@ function Footer(): JSX.Element {
 
       {/* Section 3: Web Information and Copyright */}
       <FooterStyle.Section3>
-        <FooterWebInfo links={links} />
+        <FooterWebInfo links={footerLinks} />
         <FooterCopyright value="Freight" />
       </FooterStyle.Section3>
     </FooterStyle.Wrapper>
