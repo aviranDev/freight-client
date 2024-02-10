@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import NavbarStyle from "./NavbarStyles";
 import NavigationOne from "./NavigationOne";
 import NavigationTwo from "./NavigationTwo";
-import { generalNav, guestNav, userNav } from "./navData";
+import { generalNavigation, roleNavigation } from "./navData";
 
 const user = {
   role: "admin",
@@ -38,11 +38,11 @@ export const Navbar = () => {
     <NavbarStyle.Wrapper $isvisible={isVisible}>
       <NavbarStyle.InnerContainer>
         <NavbarStyle.NavContainer order={0}>
-          <NavigationOne generalNav={generalNav} />
+          <NavigationOne navigation={generalNavigation} />
         </NavbarStyle.NavContainer>
 
         <NavbarStyle.NavContainer order={1}>
-          <NavigationTwo user={user} guestNav={guestNav} userNav={userNav} />
+          <NavigationTwo user={user} navigation={roleNavigation} />
         </NavbarStyle.NavContainer>
       </NavbarStyle.InnerContainer>
     </NavbarStyle.Wrapper>

@@ -1,43 +1,34 @@
 import { Fragment } from "react";
 import NavbarStyle from "./NavbarStyles";
-import { UserNavType, userNav } from "./navData";
 import { Link } from "react-router-dom";
-
-type UserRole = "admin" | "superAdmin" | "employee";
-
-interface User {
-  role: UserRole;
-  isLoggedIn: boolean;
-}
-
-// Use a union type to allow User or null
-type NullableUser = User | null;
-
-// Example with null
-// const user: NullableUser = null;
-
-const user: NullableUser = {
-  role: "employee",
-  isLoggedIn: false,
-};
 
 interface RightNavigationProps {
   user?: { role: string; isLoggedIn: boolean } | null; // Updated type to allow null
-  guestNav: Map<string, string>;
-  userNav: UserNavType;
+  navigation: Map<
+    string,
+    {
+      name: React.FC | string;
+      link: string;
+      title: string;
+      roles: string[];
+    }
+  >;
 }
 
-const NavigationTwo: React.FC<RightNavigationProps> = (props) => {
+const NavigationTwo: React.FC<RightNavigationProps> = ({
+  user,
+  navigation,
+}) => {
   return (
     <>
-      {props.user && (
+      {user && (
         <>
           {user ? (
             <Fragment>
-              {Array.from(userNav).map(([key, value]) => (
+              {Array.from(navigation).map(([key, value]) => (
                 <Fragment key={key}>
-                  {value.role === (user as { role: string }).role && (
-                    <NavbarStyle.NavLinkInternal to={value.path}>
+                  {value.roles.includes(user.role) && (
+                    <NavbarStyle.NavLinkInternal to={value.title}>
                       {key}
                     </NavbarStyle.NavLinkInternal>
                   )}

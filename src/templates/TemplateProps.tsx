@@ -24,7 +24,7 @@ interface TemplateProps
   generalNav?: string;
   order?: number;
   $isvisible?: boolean;
-  title1?: string;
+  hoverTitle?: string;
 }
 
 export default TemplateProps;
