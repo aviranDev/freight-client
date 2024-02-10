@@ -46,12 +46,12 @@ const NavbarStyle = {
 
     &:hover {
       background: none;
-      color: #000;
+      color: #ccc;
       transition: 0.5s ease-out;
     }
 
     &::before {
-      content: attr(title1);
+      content: attr(hoverTitle);
       display: block;
       visibility: hidden;
       position: absolute;
@@ -72,6 +72,10 @@ const NavbarStyle = {
       visibility: visible;
       opacity: 1;
     }
+  `,
+  ErrorSection: styled.div`
+    font-size: 25px;
+    padding: 20px;
   `,
 };
 

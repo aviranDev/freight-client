@@ -20,13 +20,13 @@ interface User {
 // Use a union type to allow User or null
 type NullableUser = User | null;
 
-/* const user: NullableUser = {
+const user: NullableUser = {
   role: "employee",
   isLoggedIn: false,
-}; */
+};
 
 // Example with null
-const user: NullableUser = null;
+// const user: NullableUser = null;
 
 const Sidebar: React.FC<RightNavigationProps2> = () => {
   return (

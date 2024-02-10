@@ -1,22 +1,67 @@
 import React, { Fragment } from "react";
 import NavbarStyle from "./NavbarStyles";
-import { GeneralNavType } from "./navData";
+import {
+  validateString,
+  ValidationErrorMessage,
+} from "../../utils/validateString";
+
+export type GeneralNavType = Map<
+  string,
+  {
+    name: React.FC | string;
+    link: string;
+    title: string;
+  }
+>;
 
 interface NavigationOneProps {
-  generalNav: GeneralNavType;
+  navigation: GeneralNavType;
 }
 
-const NavigationOne: React.FC<NavigationOneProps> = ({ generalNav }) => {
+const NavigationOne: React.FC<NavigationOneProps> = ({ navigation }) => {
+  const renderNavLink = (
+    key: string,
+    Icon: React.FC | string,
+    link: string,
+    title: string,
+  ) => {
+    if (!validateString(link) || !validateString(title)) {
+      return (
+        <NavbarStyle.ErrorSection key={key}>
+          <ValidationErrorMessage message={`Invalid link or title: ${link}`} />
+        </NavbarStyle.ErrorSection>
+      );
+    }
+
+    if (typeof Icon === "string" && !Icon.trim()) {
+      return (
+        <NavbarStyle.ErrorSection key={key}>
+          <ValidationErrorMessage message={`Invalid Icon: ${Icon}`} />
+        </NavbarStyle.ErrorSection>
+      );
+    }
+
+    if (typeof Icon === "number") {
+      return (
+        <NavbarStyle.ErrorSection key={key}>
+          <ValidationErrorMessage message={`Invalid Icon: ${Icon}`} />
+        </NavbarStyle.ErrorSection>
+      );
+    }
+
+    return (
+      <NavbarStyle.NavLinkInternal key={key} to={link} hoverTitle={title}>
+        {typeof Icon === "string" ? Icon : <Icon />}
+      </NavbarStyle.NavLinkInternal>
+    );
+  };
+
   return (
-    <>
-      {Array.from(generalNav).map(([key, value]) => (
-        <Fragment key={key}>
-          <NavbarStyle.NavLinkInternal to={value.link} title1={value.title}>
-            {typeof value.name === "string" ? value.name : <value.name />}
-          </NavbarStyle.NavLinkInternal>
-        </Fragment>
+    <Fragment>
+      {Array.from(navigation).map(([key, { name: Icon, link, title }]) => (
+        <Fragment key={key}>{renderNavLink(key, Icon, link, title)}</Fragment>
       ))}
-    </>
+    </Fragment>
   );
 };
 
