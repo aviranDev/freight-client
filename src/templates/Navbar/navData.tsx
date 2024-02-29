@@ -1,4 +1,5 @@
 import { FaHome, FaQuestion } from "react-icons/fa";
+import { BiSolidUserDetail } from "react-icons/bi";
 
 export const roleNavigation = new Map([
   [
@@ -8,27 +9,9 @@ export const roleNavigation = new Map([
   [
     "profile",
     {
-      name: FaQuestion,
+      name: BiSolidUserDetail,
       link: "/",
       title: "profile",
-      roles: ["employee", "admin", "superAdmin"],
-    },
-  ],
-  [
-    "maman",
-    {
-      name: FaQuestion,
-      link: "/",
-      title: "maman",
-      roles: ["employee", "admin", "superAdmin"],
-    },
-  ],
-  [
-    "swissport",
-    {
-      name: FaQuestion,
-      link: "/",
-      title: "swissport",
       roles: ["employee", "admin", "superAdmin"],
     },
   ],
@@ -37,6 +20,22 @@ export const roleNavigation = new Map([
 export const generalNavigation = new Map([
   ["home", { name: FaHome, link: "/", title: "Home" }],
   ["about", { name: FaQuestion, link: "/", title: "About us" }],
+  [
+    "maman",
+    {
+      name: "maman",
+      link: "/",
+      title: "maman",
+    },
+  ],
+  [
+    "swissport",
+    {
+      name: "swissport",
+      link: "/",
+      title: "swissport",
+    },
+  ],
 ]);
 
 export const userNavigation: Map<string, { role: string; path: string }> =

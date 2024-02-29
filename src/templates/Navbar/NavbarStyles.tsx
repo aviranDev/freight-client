@@ -39,10 +39,13 @@ const NavbarStyle = {
   `,
   NavLinkInternal: styled(HashLink)<TemplateProps>`
     color: #fff;
-    font-size: 25px;
+    font-size: ${({ fSize }) => fSize ?? "25px"};
     text-decoration: none;
     padding: 20px;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Optionally, if you want to center vertically as well */
 
     &:hover {
       background: none;
@@ -76,6 +79,13 @@ const NavbarStyle = {
   ErrorSection: styled.div`
     font-size: 25px;
     padding: 20px;
+  `,
+  NavLinkInternal2: styled.div`
+    color: #fff;
+    font-size: 25px;
+    text-decoration: none;
+    padding: 20px;
+    position: relative;
   `,
 };
 
