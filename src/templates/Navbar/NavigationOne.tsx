@@ -16,9 +16,10 @@ export type GeneralNavType = Map<
 
 interface NavigationOneProps {
   navigation: GeneralNavType;
+  date: React.ReactNode;
 }
 
-const NavigationOne: React.FC<NavigationOneProps> = ({ navigation }) => {
+const NavigationOne: React.FC<NavigationOneProps> = ({ navigation, date }) => {
   const renderNavLink = (
     key: string,
     Icon: React.FC | string,
@@ -50,9 +51,11 @@ const NavigationOne: React.FC<NavigationOneProps> = ({ navigation }) => {
     }
 
     return (
-      <NavbarStyle.NavLinkInternal key={key} to={link} hoverTitle={title}>
-        {typeof Icon === "string" ? Icon : <Icon />}
-      </NavbarStyle.NavLinkInternal>
+      <>
+        <NavbarStyle.NavLinkInternal key={key} to={link} hoverTitle={title}>
+          {typeof Icon === "string" ? Icon : <Icon />}
+        </NavbarStyle.NavLinkInternal>
+      </>
     );
   };
 
@@ -61,6 +64,7 @@ const NavigationOne: React.FC<NavigationOneProps> = ({ navigation }) => {
       {Array.from(navigation).map(([key, { name: Icon, link, title }]) => (
         <Fragment key={key}>{renderNavLink(key, Icon, link, title)}</Fragment>
       ))}
+      <NavbarStyle.NavLinkInternal2>{date}</NavbarStyle.NavLinkInternal2>
     </Fragment>
   );
 };

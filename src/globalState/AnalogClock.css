@@ -1,0 +1,75 @@
+.analog-clock {
+  position: relative;
+  width: 100px; /* Adjusted width */
+  height: 100px; /* Adjusted height */
+  border-radius: 50%;
+  border: 2px solid #333;
+  background-color: #fff;
+}
+
+.clock-face {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px; /* Increased size of the clock face */
+  height: 8px; /* Increased size of the clock face */
+  background-color: #333;
+  border-radius: 50%;
+}
+
+.hour-hand,
+.minute-hand,
+.second-hand {
+  position: absolute;
+  top: 30%; /* Adjusted top percentage */
+  left: 50%;
+  transform-origin: bottom center; /* Changed transform origin for proper rotation */
+}
+
+.hour-hand {
+  width: 3px; /* Increased thickness of the hour hand */
+  height: 20px; /* Adjusted length of the hour hand */
+  background-color: #333; /* Dark color for hour hand */
+}
+
+.minute-hand {
+  top: 20%; /* Adjusted top percentage */
+  width: 2px; /* Adjusted thickness of the minute hand */
+  height: 30px; /* Adjusted length of the minute hand */
+  background-color: #555; /* Slightly lighter color for minute hand */
+}
+
+.second-hand {
+  top: 20%; /* Adjusted top percentage */
+  width: 1px; /* Adjusted width of the second hand */
+  height: 30px; /* Adjusted length of the second hand */
+  background-color: #ff0000; /* Red color for second hand */
+}
+
+.clock-number {
+  position: absolute;
+  font-size: 12px;
+  color: #333;
+}
+
+.twelve {
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.three {
+  top: 50%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+}
+.six {
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.nine {
+  top: 50%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+}
