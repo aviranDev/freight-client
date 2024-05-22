@@ -9,9 +9,6 @@ const color = "var(--accent-color)";
 const footer = "var(--primary-color)";
 const hover = "var(--background-color)";
 
-/**
- * Styled components for the Footer section of the application.
- */
 const FooterStyle = {
   // Wrapper for the entire Footer section
   Wrapper: styled.div<Partial<TemplateProps>>`
