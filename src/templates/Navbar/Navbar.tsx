@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import NavbarStyle from "./NavbarStyles";
 import NavigationOne from "./NavigationOne";
 import NavigationTwo from "./NavigationTwo";
 import { generalNavigation, roleNavigation } from "./navData";
 import { ComponentUsingTimer } from "../../globalState/LiveTimeProvider";
+import Collapse from "./Collapse";
 
 type UserRole = "admin" | "superAdmin" | "employee";
 
@@ -15,23 +16,20 @@ interface User {
 // Use a union type to allow User or null
 type NullableUser = User | null;
 
-const user: NullableUser = {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+/* const user: NullableUser = {
   role: "employee",
-  isLoggedIn: false,
-};
+  isLoggedIn: true,
+}; */
 
-// const user: NullableUser = null;
+const user: NullableUser = null;
 
 export const Navbar = () => {
   const [collapse, setCollapse] = useState<boolean>(false);
   const [isVisible, setIsVisible] = useState<boolean>(true);
   const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
 
-  console.log("test");
-
   useEffect(() => {
-    console.log("Navbar useEffect called"); // Log when useEffect is called
-
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
 
@@ -66,7 +64,20 @@ export const Navbar = () => {
         <NavbarStyle.NavContainer order={1}>
           <NavigationTwo user={user} navigation={roleNavigation} />
         </NavbarStyle.NavContainer>
+        <NavbarStyle.OpenLinksButton
+          onClick={() => setCollapse(!collapse)}
+          collapse={collapse}
+        >
+          {collapse ? <>&#10005;</> : <> &#8801;</>}
+        </NavbarStyle.OpenLinksButton>
       </NavbarStyle.InnerContainer>
+      {collapse && (
+        <Collapse
+          user={user}
+          roleNavigation={roleNavigation}
+          generalNavigation={generalNavigation}
+        />
+      )}
     </NavbarStyle.Wrapper>
   );
 };

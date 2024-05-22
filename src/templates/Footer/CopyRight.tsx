@@ -1,45 +1,40 @@
-import FooterStyle from "./FooterStyles";
+import React, { memo, Fragment, useMemo } from "react"; // Importing necessary modules from React
+import FooterStyle from "./FooterStyles"; // Importing footer styles
 import {
   validateString,
   ValidationErrorMessage,
-} from "../../utils/validateString";
+} from "../../utils/validateString"; // Importing validation utilities
 
-/**
- * FooterCopyright component displays copyright information.
- *
- * @component
- * @example
- * // Usage:
- * <FooterCopyright value="Your Company Name" />
- *
- * @param {Object} props - The component props.
- * @param {string} props.value - The company name or value to be displayed in the copyright section.
- * @returns {JSX.Element} FooterCopyright component.
- */
-function FooterCopyright({ value }: { value: string }): JSX.Element {
-  // Validate the input value
+interface FooterCopyrightProps {
+  value: string; // Prop type for the copyright value
+}
+
+const FooterCopyright: React.FC<FooterCopyrightProps> = memo(({ value }) => {
+  // Check if the provided value is valid
   if (!validateString(value)) {
+    // Display error message if the value is invalid
     return (
-      // Display an error message if validation fails
       <ValidationErrorMessage
         message={`Invalid value provided for FooterCopyright: ${value}`}
       />
     );
   }
 
-  // Get the current year dynamically.
-  const currentYear: number = new Date().getFullYear();
+  // Calculate the current year using useMemo to avoid unnecessary re-renders
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const currentYear: number = useMemo(() => new Date().getFullYear(), []);
 
   return (
-    // Render the copyright container with the valid value and current year
     <FooterStyle.CopyrightContainer>
+      {/* Display copyright value and current year */}
       {value} &copy; <span className="current-year">{currentYear}</span>
-      <span>
+      {/* Additional copyright information */}
+      <Fragment>
         All rights reserved. Use of this site signifies your agreement to the
         terms of use.
-      </span>
+      </Fragment>
     </FooterStyle.CopyrightContainer>
   );
-}
+});
 
 export default FooterCopyright;

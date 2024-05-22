@@ -60,7 +60,7 @@ const NavigationTwo: React.FC<RightNavigationProps> = ({
 
   return (
     <>
-      {user && (
+      {user?.isLoggedIn === true && (
         <Fragment>
           {Array.from(navigation).map(
             ([key, { name: Icon, link, title, roles }]) => (

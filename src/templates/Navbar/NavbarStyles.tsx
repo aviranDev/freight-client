@@ -2,6 +2,10 @@ import styled from "styled-components";
 import { HashLink } from "react-router-hash-link";
 import TemplateProps from "../TemplateProps";
 
+interface OpenLinksButtonProps {
+  collapse: boolean; // Define the prop here
+}
+
 const NavbarStyle = {
   Wrapper: styled.div<TemplateProps>`
     grid-area: ${({ gArea }) => gArea ?? "nav"};
@@ -86,6 +90,43 @@ const NavbarStyle = {
     text-decoration: none;
     padding: 20px;
     position: relative;
+  `,
+  OpenLinksButton: styled.button<OpenLinksButtonProps>`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Adjust width as needed */
+    height: 45px; /* Adjust height as needed */
+    position: fixed;
+    top: 10px; /* Adjust top position as needed */
+    right: 10px; /* Adjust right position as needed */
+    background: none;
+    border: none;
+    color: ${({ collapse }) =>
+      collapse ? "red" : "#ccc"}; /* Change color conditionally */
+    font-size: 2rem; /* Adjust font size as needed */
+    cursor: pointer;
+
+    @media screen and (min-width: 800px) {
+      display: none;
+    }
+  `,
+  NavbarCollapseContainer: styled.div`
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px; /* Adjust padding as needed */
+    height: 100vh; /* Adjust height to fill the viewport */
+    opacity: 0; /* Start with opacity 0 */
+    transition: opacity 0.5s ease; /* Add transition for smooth opacity change */
+
+    @media (max-width: 900px) {
+      display: flex;
+      z-index: 1;
+      width: 100%;
+      opacity: 0.9; /* Set initial opacity */
+      background-color: #ccc;
+    }
   `,
 };
 

@@ -1,21 +1,17 @@
-import FooterStyle from "./FooterStyles";
-import FooterCopyright from "./CopyRight";
-import FooterExternalLinks from "./ExternalLinks";
-import FooterInternalLinks from "./InternalLinks";
-import FooterWebInfo from "./WebInfo";
-import { footerLinks, internalLinks, externalLinks } from "./footerData";
+import FooterStyle from "./FooterStyles"; // Importing styles for the footer
+import FooterCopyright from "./CopyRight"; // Importing component for copyright information
+import FooterExternalLinks from "./ExternalLinks"; // Importing component for external links
+import FooterInternalLinks from "./InternalLinks"; // Importing component for internal links
+import FooterWebInfo from "./WebInfo"; // Importing component for web information
+import { footerLinks, internalLinks, externalLinks } from "./footerData"; // Importing data for footer links
 
-/**
- * Footer component displays the footer section of the website.
- *
- * @returns {JSX.Element} Footer component.
- */
 function Footer(): JSX.Element {
   return (
     <FooterStyle.Wrapper>
       {/* Section 1: Internal Links */}
       <FooterStyle.Section1>
-        <FooterInternalLinks payload={internalLinks} />
+        <FooterInternalLinks payload={internalLinks} />{" "}
+        {/* Passing internal links data to InternalLinks component */}
       </FooterStyle.Section1>
 
       {/* Divider between sections */}
@@ -23,13 +19,15 @@ function Footer(): JSX.Element {
 
       {/* Section 2: External Links */}
       <FooterStyle.Section2>
-        <FooterExternalLinks payload={externalLinks} />
+        <FooterExternalLinks payload={externalLinks} />{" "}
+        {/* Passing external links data to ExternalLinks component */}
       </FooterStyle.Section2>
 
       {/* Section 3: Web Information and Copyright */}
       <FooterStyle.Section3>
-        <FooterWebInfo links={footerLinks} />
-        <FooterCopyright value="Freight" />
+        <FooterWebInfo links={footerLinks} />{" "}
+        {/* Passing footer links data to WebInfo component */}
+        <FooterCopyright value={"Freight"} /> {/* Copyright information */}
       </FooterStyle.Section3>
     </FooterStyle.Wrapper>
   );

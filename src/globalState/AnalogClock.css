@@ -1,7 +1,10 @@
 .analog-clock {
-  position: relative;
-  width: 100px; /* Adjusted width */
-  height: 100px; /* Adjusted height */
+  position: fixed;
+  top: 0; /* Positioned at the top of the screen */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust to center horizontally */
+  width: 75px; /* Adjusted width */
+  height: 75px; /* Adjusted height */
   border-radius: 50%;
   border: 2px solid #333;
   background-color: #fff;
@@ -22,7 +25,7 @@
 .minute-hand,
 .second-hand {
   position: absolute;
-  top: 30%; /* Adjusted top percentage */
+  top: 25%; /* Adjusted top percentage */
   left: 50%;
   transform-origin: bottom center; /* Changed transform origin for proper rotation */
 }
@@ -34,14 +37,14 @@
 }
 
 .minute-hand {
-  top: 20%; /* Adjusted top percentage */
+  top: 10%; /* Adjusted top percentage */
   width: 2px; /* Adjusted thickness of the minute hand */
   height: 30px; /* Adjusted length of the minute hand */
   background-color: #555; /* Slightly lighter color for minute hand */
 }
 
 .second-hand {
-  top: 20%; /* Adjusted top percentage */
+  top: 10%; /* Adjusted top percentage */
   width: 1px; /* Adjusted width of the second hand */
   height: 30px; /* Adjusted length of the second hand */
   background-color: #ff0000; /* Red color for second hand */

@@ -17,9 +17,9 @@ const Templates: React.FC<TemplatesProps> = ({ children }) => (
     <LiveTimeProvider>
       <Header />
     </LiveTimeProvider>
-    {/* <Sidebar /> */}
+    {/* <Sidebar />  */}
     <Main>{children}</Main>
-    <Footer />
+    {/* <Footer /> */}
   </TemplateContainer>
 );
 
