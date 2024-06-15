@@ -2,15 +2,15 @@ import React from "react";
 import styled from "styled-components";
 
 interface TitleProps {
-  level?: 1 | 2 | 3 | 4 | 5 | 6;
+  $level?: 1 | 2 | 3 | 4 | 5 | 6;
   color?: string;
   children: React.ReactNode;
   className?: string;
 }
 
 const TitleStyles = styled.h1<TitleProps>`
-  font-size: ${({ level }) => {
-    switch (level) {
+  font-size: ${({ $level }) => {
+    switch ($level) {
       case 1:
         return "2em";
       case 2:
@@ -31,10 +31,10 @@ const TitleStyles = styled.h1<TitleProps>`
   color: ${({ color }) => color ?? "#000"};
 `;
 
-const Title: React.FC<TitleProps> = ({ level = 1, children, className }) => {
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+const Title: React.FC<TitleProps> = ({ $level = 1, children, className }) => {
+  const Tag = `h${$level}` as keyof JSX.IntrinsicElements;
   return (
-    <TitleStyles as={Tag} level={level} className={className}>
+    <TitleStyles as={Tag} $level={$level} className={className}>
       {children}
     </TitleStyles>
   );

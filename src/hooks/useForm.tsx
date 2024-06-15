@@ -14,8 +14,7 @@ const useForm = (initialState: Record<string, string>) => {
     setErrors((prev) => ({ ...prev, [name]: validate(name, value, length) }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const validateBeforeSubmit = () => {
     let hasErrors = false;
     // Validate all fields
     for (const name in valuesRef.current) {
@@ -28,12 +27,9 @@ const useForm = (initialState: Record<string, string>) => {
     }
 
     if (hasErrors) return; // Stop submission if any field has errors
-
-    // Form submission logic can be added here
-    console.log("Form submitted:", valuesRef.current);
   };
 
-  return { errors, handleChange, handleSubmit };
+  return { errors, handleChange, validateBeforeSubmit };
 };
 
 export default useForm;

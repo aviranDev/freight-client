@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 const Navigation = () => (
   <Routes>
     {/* Public Routes */}
-    <Route path="/" element={<Signin />} />
+    <Route path="/login" element={<Signin />} />
   </Routes>
 );
 

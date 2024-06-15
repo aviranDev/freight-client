@@ -3,7 +3,7 @@ import NavbarStyle from "./NavbarStyles";
 import NavigationOne from "./NavigationOne";
 import NavigationTwo from "./NavigationTwo";
 import { generalNavigation, roleNavigation } from "./navData";
-import { ComponentUsingTimer } from "../../globalState/LiveTimeProvider";
+import { ComponentUsingTimer } from "../../context/LiveTimeProvider";
 import Collapse from "./Collapse";
 
 type UserRole = "admin" | "superAdmin" | "employee";

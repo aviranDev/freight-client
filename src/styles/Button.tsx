@@ -3,7 +3,13 @@ import styled from "styled-components";
 
 // Define types for the Button props
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: "primary" | "secondary" | "success" | "danger" | "warning" | "info"; // Add more variants as needed
+  $variant?:
+    | "primary"
+    | "secondary"
+    | "success"
+    | "danger"
+    | "warning"
+    | "info"; // Add more variants as needed
   width?: string;
 };
 
@@ -20,42 +26,42 @@ export const StyledButton = styled.button<ButtonProps>`
 
   /* Variant styles */
   ${(props) =>
-    props.variant === "primary" &&
+    props.$variant === "primary" &&
     `
     background-color: #007bff;
     color: #fff;
   `}
 
   ${(props) =>
-    props.variant === "secondary" &&
+    props.$variant === "secondary" &&
     `
     background-color: #6c757d;
     color: #fff;
   `}
 
   ${(props) =>
-    props.variant === "success" &&
+    props.$variant === "success" &&
     `
     background-color: #28a745;
     color: #fff;
   `}
 
   ${(props) =>
-    props.variant === "danger" &&
+    props.$variant === "danger" &&
     `
     background-color: #dc3545;
     color: #fff;
   `}
 
   ${(props) =>
-    props.variant === "warning" &&
+    props.$variant === "warning" &&
     `
     background-color: #ffc107;
     color: #212529;
   `}
 
   ${(props) =>
-    props.variant === "info" &&
+    props.$variant === "info" &&
     `
     background-color: #17a2b8;
     color: #fff;

@@ -37,7 +37,6 @@ const Input: React.FC<InputProps> = ({ icon: Icon, ...props }) => {
                 : "password"
               : props.type
           }
-          id={props.name}
           name={props.name}
           defaultValue={props.value}
           onChange={props.onChange}
@@ -52,7 +51,7 @@ const Input: React.FC<InputProps> = ({ icon: Icon, ...props }) => {
           </TogglePasswordIcon>
         )}
       </InputRow>
-      <ErrorMessage hasError={!!props.errorMessage}>
+      <ErrorMessage $hasError={!!props.errorMessage}>
         {props.errorMessage}
       </ErrorMessage>
     </InputContainer>
