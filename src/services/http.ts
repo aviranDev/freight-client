@@ -3,49 +3,99 @@ import axios, {
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from "axios";
-import { toast } from "react-toastify";
-import { getLocalStorage } from "../utils/localStorage";
+import { getLocalStorage, setLocalStorage, removeLocalStorage } from "../utils/localStorage";
+import { jwtDecode } from "jwt-decode";
+import { refreshtoken } from './user'
+const API_URL = import.meta.env.VITE_API_URL;
+export interface DecodedToken {
+  exp: number;
+  data: object;
+  // Add any other properties your token might have
+}
+
+// Helper function to check if the token is expired
+const isTokenExpired = (token: string): boolean => {
+  const decodedToken = jwtDecode<DecodedToken>(token);
+  const currentTime = Math.floor(Date.now() / 1000);
+  return decodedToken.exp < currentTime;
+};
 
 // Create an Axios instance
 const instance = axios.create({
-  baseURL: "https://your-api-base-url.com", // Set your API base URL here if needed
-  timeout: 10000, // Set a timeout if needed
+  baseURL: API_URL, // Set your API base URL here if needed
+  headers: { 'Content-Type': 'application/json' },
+  withCredentials: true
 });
 
+
+
 // Request interceptor to add auth token
-instance.interceptors.request.use(
-  (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
-    const token = getLocalStorage<string | null>("token", null);
-    if (token && config.headers) {
-      config.headers["x-auth-token"] = token;
-    }
-    return config;
-  },
+instance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+  const token = getLocalStorage<string | null>("accessToken", null);
+  if (token && config.headers) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+},
   (error: AxiosError): Promise<AxiosError> => {
     return Promise.reject(error);
   },
 );
 
-// Response interceptor for handling errors
-instance.interceptors.response.use(
-  (response: AxiosResponse): AxiosResponse => {
+
+
+const refreshAccessToken = async (): Promise<string> => {
+  try {
+    // Make a request to the refresh token endpoint
+    const response = await refreshtoken();
+    const decodedUser = jwtDecode<DecodedToken>(response);
+    setLocalStorage("user", decodedUser);
+    setLocalStorage('accessToken', response);
     return response;
-  },
-  (error: AxiosError): Promise<AxiosError> => {
-    const expectedError =
-      error.response &&
-      error.response.status >= 400 &&
-      error.response.status < 500;
+  } catch (error) {
+    removeLocalStorage('accessToken');
+    removeLocalStorage('user');
+    window.location.href = '/login';
+    throw error;
+  }
+};
 
-    if (!expectedError) {
-      toast.error("An unexpected error occurred.");
-    } else if (expectedError) {
-      toast.error(`An Error Occurred: ${error.message}`);
+const getCookie = (name: string): string | null => {
+  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  return match ? decodeURIComponent(match[2]) : null;
+};
+
+instance.interceptors.response.use(
+  (response: AxiosResponse) => response,
+  async (error: AxiosError) => {
+    const originalRequest = error.config as InternalAxiosRequestConfig & { _retry?: boolean };
+    if ((error.response?.status === 401 || error.response?.status === 403) && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      // Check if the cookie is present
+      const jwtCookie = getCookie("jwt");
+      if (!jwtCookie) {
+        console.log("Cookie is missing, logging out...");
+        removeLocalStorage("accessToken");
+        removeLocalStorage("user");
+        return Promise.reject(error);
+      }
+
+      try {
+        const newToken = await refreshAccessToken();
+        originalRequest.headers.Authorization = `Bearer ${newToken}`;
+        return axios(originalRequest);
+      } catch (err) {
+        removeLocalStorage("accessToken");
+        removeLocalStorage("user");
+        return Promise.reject(err);
+      }
     }
 
     return Promise.reject(error);
-  },
+  }
 );
+
 
 // Export the HTTP methods
 const httpService = {

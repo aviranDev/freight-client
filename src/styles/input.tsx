@@ -6,6 +6,7 @@ export interface InputProps {
   name: string;
   value?: string;
   label?: string;
+  validText?: string;
   icon?: IconType;
   placeholder?: string;
   errorMessage?: string;
@@ -13,7 +14,7 @@ export interface InputProps {
 }
 
 interface ErrorMessageProps {
-  hasError: boolean;
+  $hasError: boolean;
 }
 
 export const ErrorMessage = styled.p<ErrorMessageProps>`
@@ -21,7 +22,7 @@ export const ErrorMessage = styled.p<ErrorMessageProps>`
   margin: 0;
   font-size: 0.9rem;
   height: 1.2rem; /* Reserve space for the error message */
-  visibility: ${({ hasError }) => (hasError ? "visible" : "hidden")};
+  visibility: ${({ $hasError }) => ($hasError ? "visible" : "hidden")};
 `;
 
 export const InputContainer = styled.div`
@@ -39,7 +40,7 @@ export const InputRow = styled.div`
 export const IconWrapper = styled.div`
   display: flex;
   background-color: #ccc;
-  padding: 10.5px;
+  padding: 10.48px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   align-items: center;

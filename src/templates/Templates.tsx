@@ -5,7 +5,7 @@ import Header from "./Navbar/Navbar";
 import Main from "./Main";
 import Footer from "./Footer/Footer";
 import Sidebar from "./Sidebar/Sidebar";
-import { LiveTimeProvider } from "../globalState/LiveTimeProvider";
+import { LiveTimeProvider } from "../context/LiveTimeProvider";
 
 interface TemplatesProps {
   children: ReactNode;
@@ -13,10 +13,10 @@ interface TemplatesProps {
 
 const Templates: React.FC<TemplatesProps> = ({ children }) => (
   <TemplateContainer>
-    <GlobalStyles />
-    <LiveTimeProvider>
+    {/* <GlobalStyles /> */}
+    {/*     <LiveTimeProvider>
       <Header />
-    </LiveTimeProvider>
+    </LiveTimeProvider> */}
     {/* <Sidebar />  */}
     <Main>{children}</Main>
     {/* <Footer /> */}

@@ -10,21 +10,21 @@ interface RightNavigationProps2 {
   userNav?: UserNavType;
 }
 
-type UserRole = "admin" | "superAdmin" | "employee";
+// type UserRole = "admin" | "superAdmin" | "employee";
 
-interface User {
+/* interface User {
   role: UserRole;
   isLoggedIn: boolean;
-}
+} */
 
 // Use a union type to allow User or null
-type NullableUser = User | null;
+// type NullableUser = User | null;
 
-const user: NullableUser = {
+/* const user: NullableUser = {
   role: "employee",
   isLoggedIn: false,
 };
-
+ */
 // Example with null
 // const user: NullableUser = null;
 
